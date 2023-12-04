@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>BAMOS REGISTRATION FORM</title>
+
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header>BAMOS FAMILY REGISTRATION FORM <br><h6>BARANGAY BAHAY PARE FAMILY PROFILE</h6> </header>
+      <form action="" class="form">
+        <div class="input-box">
+          <label>*KALUSUGANG PAMPAMILYA*</label>
+        </div>
+
+          <div class="input-box member">
+            <label>Kasama sa bahay na May Kapansanan</label>
+            <div class="column">
+            <input type="text" placeholder="Member 1"    />
+            <input type="date" placeholder="Kapanganakan"    />
+            </div>
+            <div class="column">
+              <input type="number" placeholder="Edad"    />
+              <input type="text" placeholder="Kapansanan"   />
+              <div class="select-box">
+                <select>
+                  <option hidden>Kasarian</option>
+                  <option>Babae</option>
+                  <option>Lalaki</option>
+                  <option>Iba pa</option>
+                </select>
+
+            </div>
+          </div>
+            <br>
+
+            <div class="input-box member">
+                <div class="column">
+                <input type="text" placeholder="Member 2"    />
+                <input type="date" placeholder="Kapanganakan"    />
+                </div>
+                <div class="column">
+                  <input type="number" placeholder="Edad"    />
+                  <input type="text" placeholder="Kapansanan"   />
+                  <div class="select-box">
+                    <select>
+                      <option hidden>Kasarian</option>
+                      <option>Babae</option>
+                      <option>Lalaki</option>
+                      <option>Iba pa</option>
+                    </select>
+    
+                </div>
+              </div>
+                <br>
+
+                <div class="input-box member">
+                    <div class="column">
+                    <input type="text" placeholder="Member 3"    />
+                    <input type="date" placeholder="Kapanganakan"    />
+                    </div>
+                    <div class="column">
+                      <input type="number" placeholder="Edad"    />
+                      <input type="text" placeholder="Kapansanan"   />
+                      <div class="select-box">
+                        <select>
+                          <option hidden>Kasarian</option>
+                          <option>Babae</option>
+                          <option>Lalaki</option>
+                          <option>Iba pa</option>
+                        </select>
+        
+                    </div>
+                  </div>
+                    <br>
+        
+            
+ 
+
+        <div class="column">
+        <button>Previous Page</button>
+        <button>Clear Form</button>
+        <button type="button"><a href="registration-form5.html">Next</a></button>
+        </div>
+      </form>
+    </section>
+  </body>
+
+<style>
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(to bottom, #b3b6b6, #A7D397 );
+}
+.container {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.container header {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #120d0d;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1.1rem;
+  color: #120d0d;
+  margin-top: 8px;
+  border: 2px solid #c3bfbf;
+  border-radius: 10px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 #120d0d;
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .gender-box {
+  margin-top: 20px;
+}
+.form ::placeholder{
+  font-size: 1.1rem;
+  color: #525252;
+}
+.form label{
+  font-size: 1.2rem;
+}
+.gender-box h3 {
+  color: #120d0d;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: #A7D397;
+}
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #120d0d;
+  font-size: 1.1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #555843;
+}
+.form button:hover {
+  background: #ff0c0c;
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}
+</style>
+</html>

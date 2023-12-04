@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>BAMOS ACCOUNT REGISTRATION</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!--CSS-->
+
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!--HEADER-->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      <h1 class="logo me-auto me-lg-0"><a href="">BAMOS<span>.</span></a></h1>
+
+      <a href="get-started.html" class="get-started-btn scrollto">BACK</a>
+
+    </div>
+  </header>
+
+  <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+          <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <h3 class="fw-normal mb-5" style="color: #000000;">Your Information</h3>
+
+                    <div class="mb-4 pb-2">
+                      <select class="select" id="resStat">
+                        <option hidden>Status</option>
+                        <option value="Current Resident">Current Resident</option>
+                        <option value="Previous Resident">Previous Resident</option>
+                        <option value="Deceased Resident">Deceased Resident</option>
+                      </select>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div class="form-outline">
+                          <input type="text" name="lastname" id="lastname" class="form-control form-control-lg">
+                          <label class="form-label" for="lastname">Last name</label>
+                        </div>
+
+                        <div class="form-outline">
+                          <input type="text" id="middlename" class="form-control form-control-lg" />
+                          <label class="form-label" for="middlename">Middle name</label>
+                        </div>
+
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+
+                        <div class="form-outline">
+                          <input type="text" name="firstname" id="firstname" class="form-control form-control-lg">
+                          <label class="form-label" for="firstname">First name</label>
+                        </div>
+
+                        <div class="form-outline">
+                          <input type="date" id="birthdate" class="form-control form-control-lg" />
+                          <label class="form-label" for="birthdate">Date of Birth</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-4 pb-2">
+                      <select class="select" id="civilstatus">
+                        <option hidden>Civil Status</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Widowed">Widowed</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline">
+                        <input type="text" name="username" id="username" class="form-control form-control-lg">
+                        <label class="form-label" for="username">Enter new username</label>
+                      </div>
+
+                      <div class="form-outline">
+                        <input type="text" name="pass" id="pass" class="form-control form-control-lg">
+                        <label class="form-label" for="pass">Enter new password</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 bg-indigo text-white">
+                  <div class="p-5">
+                    <h3 class="fw-normal mb-5">Additional Info</h3>
+
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline form-white">
+                        <input type="text" id="address" class="form-control form-control-lg" />
+                        <label class="form-label" for="address">Address</label>
+                      </div>
+                    </div>
+
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline form-white">
+                        <input type="text" id="housenum" class="form-control form-control-lg" />
+                        <label class="form-label" for="housenum">Street Name + House number</label>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-5 mb-4 pb-2">
+
+                        <div class="form-outline form-white">
+                          <input type="text" id="sitio" class="form-control form-control-lg" />
+                          <label class="form-label" for="sitio">Sitio</label>
+                        </div>
+
+                      </div>
+                      <div class="col-md-7 mb-4 pb-2">
+
+                        <div class="form-outline form-white">
+                          <input type="text" id="purok" class="form-control form-control-lg" />
+                          <label class="form-label" for="purok">Purok</label>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline form-white">
+                        <input type="text" id="email" class="form-control form-control-lg" />
+                        <label class="form-label" for="email">E-mail (optional)</label>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-5 mb-4 pb-2">
+
+                        <div class="form-outline form-white">
+                          <input type="text" id="phonenum" class="form-control form-control-lg" />
+                          <label class="form-label" for="phonenum">Phone number</label>
+                        </div>
+
+                      </div>
+                      <div class="col-md-7 mb-4 pb-2">
+
+                        <div class="form-outline form-white">
+                          <input type="text" id="enumber" class="form-control form-control-lg" />
+                          <label class="form-label" for="enumber">Emergency phone number</label>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class="form-check d-flex justify-content-start mb-4 pb-3">
+                      <input class="form-check-input me-3" type="checkbox" value="" id="termscheck" />
+                      <label class="form-check-label text-white" for="termscheck">
+                        I do accept the <a href="terms-conditions.html" class="text-white"><u>Terms and
+                            Conditions</u></a> of your
+                        site.
+                      </label>
+                    </div>
+                    <button href="" id="reg" type="submit" class="btn btn-light btn-lg"
+                      onclick="add()">Register</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </section>
+
+</body>
+
+<main id="main">
+
+  <!--Footer-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+
+
+          <div class="container">
+            <div class="copyright">
+              &copy; Copyright <strong><span>BAMOS</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+
+            </div>
+          </div>
+  </footer><!--End Footer-->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!--Template Main JS File-->
+  <script src="assets/js/main.js"></script>
+
+  </body>
+
+
+
+  <style>
+    .body {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .gradient-custom {
+      background: #0c0711;
+      background: linear-gradient(to bottom, #b3b6b6, #A7D397)
+    }
+
+    @media (min-width: 1025px) {
+      .h-custom {
+        height: 100vh !important;
+      }
+    }
+
+    div.card {
+      zoom: 70%;
+    }
+
+    .card-registration .select-input.form-control :not([disabled]) {
+      font-size: 1rem;
+      line-height: 2.15;
+      padding-left: .75em;
+      padding-right: .75em;
+    }
+
+    .card-registration .select-arrow {
+      top: 13px;
+    }
+
+    .gradient-custom-2 {
+      background: #a1c4fd;
+
+      background: linear-gradient(to bottom, #b3b6b6, #A7D397);
+
+      background: linear-gradient(to bottom, #b3b6b6, #A7D397);
+    }
+
+    .bg-indigo {
+      background-color: rgb(60, 60, 60);
+    }
+
+    @media (min-width: 992px) {
+      .card-registration-2 .bg-indigo {
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .card-registration-2 .bg-indigo {
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
+    }
+
+    .gradient-custom {
+      background: linear-gradient(to bottom, #b3b6b6, #A7D397)
+    }
+
+    div.card {
+      zoom: 75%;
+    }
+
+    .open-button {
+      background-color: #555;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+      position: fixed;
+      bottom: 23px;
+      right: 28px;
+      width: 280px;
+    }
+
+    /* The popup form - hidden by default */
+    .form-popup {
+      max-width: 30%;
+      display: none;
+      position: fixed;
+      top: 50px;
+      bottom: 30px;
+      border: 5px solid #f1f1f1;
+      border-radius: 10px;
+      z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+      padding: 50px;
+      background-color: rgb(49, 48, 48);
+      border-radius: 10px;
+    }
+
+    /* Full-width input fields */
+    .form-container input[type=text],
+    .form-container input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    /* When the inputs get focus, do something */
+    .form-container input[type=text]:focus,
+    .form-container input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Set a style for the submit/login button */
+    .form-container .btn {
+      background-color: #04AA6D;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    /* Add a red background color to the cancel button */
+    .form-container .cancel {
+      background-color: red;
+    }
+
+    /* Add some hover effects to buttons */
+    .form-container .btn:hover,
+    .open-button:hover {
+      opacity: 1;
+    }
+
+
+    #footer .copyright {
+      text-align: center;
+      padding-top: 0px;
+    }
+
+    #footer .credits {
+      padding-top: 0px;
+      text-align: center;
+      font-size: 13px;
+      color: #000000;
+    }
+  </style>
+  <script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="text/javascript">
+
+    // Import the Supabase client
+
+    // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
+    const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
+
+    // Create a Supabase client
+    const database = supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Function to check the connection status and show an alert
+    async function checkConnection() {
+      try {
+        // Try to make a request to Supabase to check the connection
+        const { data, error } = await database.from('testing').select();
+
+        // If there's an error, log it
+        if (error) {
+          console.error('Error connection! Please try again.', error.message);
+        } else {
+          // If successful, show an alert
+          alert('Connection secured!');
+        }
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
+    }
+
+    // Call the checkConnection function
+    checkConnection();
+
+    async function add() {
+
+      let username = document.getElementById("username").value;
+      let password = document.getElementById("pass").value;
+      let lastname = document.getElementById("lastname").value;
+      let firstname = document.getElementById("firstname").value;
+      let middlename = document.getElementById("middlename").value;
+      let birthday = document.getElementById("birthdate").value;
+      let sitio = document.getElementById("sitio").value;
+      let purok = document.getElementById("purok").value;
+      let email = document.getElementById("email").value;
+      let phoneNum = document.getElementById("phonenum").value;
+      let emerNum = document.getElementById("enumber").value;
+
+
+      var res = document.getElementById("resStat");
+      var resSelectedIndex = res.selectedIndex;
+      var resOptions = res.options;
+      var resStatus = resOptions[resSelectedIndex].value;
+
+      var civil = document.getElementById("civilstatus");
+      var civilSelectedIndex = civil.selectedIndex;
+      var civilOptions = civil.options;
+      var civilStatus = civilOptions[civilSelectedIndex].value;
+
+      console.log(username)
+      console.log(password)
+      const { data, error } = await database
+        .from('testing')
+        .insert([
+          {
+            username: username,
+            password: password,
+            lastname: lastname,
+            firstname: firstname,
+            middlename: middlename,
+            birthDate: birthday,
+            sitio: sitio,
+            purok: purok,
+            email: email,
+            phoneNum: phoneNum,
+            emergencyNum: emerNum,
+            residentStatus: resStatus,
+            civilStatus: civilStatus
+          },
+        ])
+
+      alert("New User Created!");
+      window.location.href = 'get-started.html'
+    }
+  </script>
+
+</html>
