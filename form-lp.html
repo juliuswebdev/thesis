@@ -8,7 +8,7 @@
 
     <link href="BAMOS LOGO/favicon.ico" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -17,7 +17,7 @@
       <form action="#" class="form">
         <div class="input-box">
           <label></label>
-          <input type="text" placeholder="Family representative name" />
+          <input type="text" placeholder="Family representative name"  name="member_name"/>
         </div>
 
         <div class="input-box">
@@ -258,6 +258,7 @@
 
       </form>
     </section>
+    <script src="form-global.js"></script>
   </body>
 
 <style>
@@ -392,7 +393,7 @@ body {
   }
 }
 </style>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
     function myFunction() {
       let text = "Are you sure you want to submit your data?\nEither OK or Cancel.";
@@ -403,5 +404,83 @@ body {
       }
       document.getElementById("demo").innerHTML = text;
     }
+
+
+// Import the Supabase client
+
+// Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
+const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
+
+// Create a Supabase client
+const database = supabase.createClient(supabaseUrl, supabaseKey);
+
+// Function to check the connection status and show an alert
+async function checkConnection() {
+  try {
+    // Try to make a request to Supabase to check the connection
+    const { data, error } = await database.from('miyembro').select().eq('user_id', userData.id).limit(1);
+    
+
+   const member = data;
+   member.forEach(element => {
+      console.log(element);  
+      document.querySelector('[name="member_name"]').value = element.pinuno
+   }); 
+
+    // If there's an error, log it
+    if (error) {
+      console.error('Error connection! Please try again.', error.message);
+    } else {
+      // If successful, show an alert
+      alert('Connection secured!');
+    }
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+// Call the checkConnection function
+checkConnection();
+
+
+
+
+async function nextPage2() {
+
+  let  member = new Array();
+  
+
+  for ($i=0; $i <= 6; $i++) {
+
+    member.push({
+      name: $(`#member${$i+1}`).val(),
+      bday: $(`#kapanganakan${$i+1}`).val(),
+      age: $(`#gulang${$i+1}`).val(),
+      weight: $(`#timbang${$i+1}`).val(),
+      imunization: $(`#imunisasyon${$i+1}`).val(),
+      nagsagawa: $(`#nasagawa${$i+1}`).val()
+    });
+  }
+
+
+  const { data, error } = await database
+    .from('nutrisyon')
+    .insert([
+      {
+          member_1: member[0],
+          member_2: member[1],
+          member_3: member[2],
+          member_4: member[3],
+          member_5: member[4],
+          member_6: member[5],
+          member_7: member[6],
+          user_id: userData.id
+      },
+    ])
+
+  alert("New User Created!");
+  window.location.href = 'registration-form4.html'
+}
     </script>
 </html>
