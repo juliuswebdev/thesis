@@ -20693,7 +20693,7 @@ code {
 .home-tab .chartjs-legend ul {
   list-style: none;
   padding-left: 0;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   margin-bottom: 0;
 }
@@ -26078,11 +26078,6 @@ dl li {
   margin-bottom: 0;
 }
 
-.list-wrapper ul li:last-child .form-check {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
 .list-wrapper ul li .col-content {
   width: 100%;
 }
@@ -26114,6 +26109,10 @@ dl li {
   height: 1.25rem;
   line-height: 20px;
   text-align: center;
+}
+
+.form-control.form-control-lg {
+  padding-left: 10px;
 }
 
 .rtl .list-wrapper .remove {

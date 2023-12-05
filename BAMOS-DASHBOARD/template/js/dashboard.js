@@ -366,98 +366,6 @@
       bar.text.style.fontSize = '0rem';
       bar.animate(.34); // Number from 0.0 to 1.0
     }
-    if ($("#marketingOverview").length) {
-      var marketingOverviewChart = document.getElementById("marketingOverview").getContext('2d');
-      var marketingOverviewData = {
-          labels: ["JAN","FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
-          datasets: [{
-              label: '1st and 2nd week',
-              data: [110, 220, 200, 190, 220, 110, 210, 110, 205, 202, 201, 150],
-              backgroundColor: "#52CDFF",
-              borderColor: [
-                  '#52CDFF',
-              ],
-              borderWidth: 0,
-              fill: true, // 3: no fill
-              
-          },{
-            label: '3rd and 4th week',
-            data: [215, 290, 210, 250, 290, 230, 290, 210, 280, 220, 190, 300],
-            backgroundColor: "#1F3BB3",
-            borderColor: [
-                '#1F3BB3',
-            ],
-            borderWidth: 0,
-            fill: true, // 3: no fill
-        }]
-      };
-  
-      var marketingOverviewOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-          scales: {
-              yAxes: [{
-                  gridLines: {
-                      display: true,
-                      drawBorder: false,
-                      color:"#F0F0F0",
-                      zeroLineColor: '#F0F0F0',
-                  },
-                  ticks: {
-                    beginAtZero: true,
-                    autoSkip: true,
-                    maxTicksLimit: 5,
-                    fontSize: 10,
-                    color:"#6B778C"
-                  }
-              }],
-              xAxes: [{
-                stacked: true,
-                barPercentage: 0.35,
-                gridLines: {
-                    display: false,
-                    drawBorder: false,
-                },
-                ticks: {
-                  beginAtZero: false,
-                  autoSkip: true,
-                  maxTicksLimit: 12,
-                  fontSize: 10,
-                  color:"#6B778C"
-                }
-            }],
-          },
-          legend:false,
-          legendCallback: function (chart) {
-            var text = [];
-            text.push('<div class="chartjs-legend"><ul>');
-            for (var i = 0; i < chart.data.datasets.length; i++) {
-              console.log(chart.data.datasets[i]); // see what's inside the obj.
-              text.push('<li class="text-muted text-small">');
-              text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
-              text.push(chart.data.datasets[i].label);
-              text.push('</li>');
-            }
-            text.push('</ul></div>');
-            return text.join("");
-          },
-          
-          elements: {
-              line: {
-                  tension: 0.4,
-              }
-          },
-          tooltips: {
-              backgroundColor: 'rgba(31, 59, 179, 1)',
-          }
-      }
-      var marketingOverview = new Chart(marketingOverviewChart, {
-          type: 'bar',
-          data: marketingOverviewData,
-          options: marketingOverviewOptions
-      });
-      document.getElementById('marketing-overview-legend').innerHTML = marketingOverview.generateLegend();
-    }
     if ($("#marketingOverview-dark").length) {
       var marketingOverviewChartDark = document.getElementById("marketingOverview-dark").getContext('2d');
       var marketingOverviewDataDark = {
@@ -770,6 +678,83 @@
           options: leaveReportOptionsDark
       });
     }
+
+    const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
+    const database = supabase.createClient(supabaseUrl, supabaseKey);
+
+    var userDetails = localStorage.getItem('userDetails') ? JSON.parse(localStorage.getItem('userDetails')) : null;
+    if(userDetails != null) {
+      if(userDetails.role != 1) {
+        window.location.href = '/get-started.html';
+      }
+      $('#userAdmin').text(userDetails.username);
+      $('#userAdminEmail').text(userDetails.email);
+
+    } else {
+      window.location.href = '/get-started.html';
+    }
+
+    $(document).on('click', '#sign-out', function(e) {
+      e.preventDefault();
+      localStorage.setItem('userDetails', null);
+      window.location.href="../../get-started.html";
+    });
+
+    header();
+
+    async function header() {
+      var { data, error } = await database.from('audit').select().limit(10).order('created_at', {ascending: false});
+      NotificationUser(data);
+    }
+
+    function NotificationUser(data) {
+      var html = '';
+      for(var x = 0; x < data.length; x++) {
   
+          var user = data[x].description;
+          var date = data[x].created_at;
+  
+          var icon = (data[x].page == 'login') ? 'key' : 'human';
+  
+          html += `
+          <a class="dropdown-item preview-item py-3">
+            <div class="preview-thumbnail">
+              <i class="mdi mdi-${icon} m-auto text-primary"></i>
+            </div>
+            <div class="preview-item-content">
+              <h6 class="preview-subject fw-normal text-dark mb-1 text-capitalize">${user}</h6>
+              <p class="fw-light small-text mb-0">${timeSince(date)}</p>
+            </div>
+          </a>
+          `;
+      }
+      $('#notification-list').html(html);
+    }
+
+    function timeSince(input) {
+
+      const date = (input instanceof Date) ? input : new Date(input);
+      const formatter = new Intl.RelativeTimeFormat('en');
+      const ranges = {
+        years: 3600 * 24 * 365,
+        months: 3600 * 24 * 30,
+        weeks: 3600 * 24 * 7,
+        days: 3600 * 24,
+        hours: 3600,
+        minutes: 60,
+        seconds: 1
+      };
+      const secondsElapsed = (date.getTime() - Date.now()) / 1000;
+      for (let key in ranges) {
+        if (ranges[key] < Math.abs(secondsElapsed)) {
+          const delta = secondsElapsed / ranges[key];
+          return formatter.format(Math.round(delta), key);
+        }
+      }
+    }
+  
+
+
   });
 })(jQuery);

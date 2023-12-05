@@ -60,33 +60,37 @@
                 <p class="text-white-50 mb-5">Please enter your phone number to reset your password.</p>
   
                 <div class="form-outline form-white mb-4">
-                  <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                  <label class="form-label" for="typeEmailX">Phone number</label>
+                  <input type="email" id="phoneNum" class="form-control form-control-lg" value="09" />
+                  <label class="form-label" for="phoneNum">Phone number</label>
+                  <br>
+                  <button class="btn btn-outline-light btn-lg px-5" onclick="generateOTP()">Send Code</button>
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                  <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                  <label class="form-label" for="typeEmailX">Code</label>
+                  <input type="text" id="code" class="form-control form-control-lg" />
+                  <label class="form-label" for="code">Code</label>
+                  <span id = "otp" style="color:red; display: none;"> </span>
                 </div>
   
                 <div class="form-outline form-white mb-4">
-                  <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-                  <label class="form-label" for="typePasswordX">New password</label>
+                  <input type="password" id="password" class="form-control form-control-lg" />
+                  <label class="form-label" for="password">New password</label>
+                  <span id = "passwordLabel" style="color:red; display: none;"> </span>
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                  <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-                  <label class="form-label" for="typePasswordX">Re-enter new password</label>
+                  <input type="password" id="repassword" class="form-control form-control-lg" />
+                  <label class="form-label" for="repassword">Re-enter new password</label>
+                  <span id = "rePasswordLabel" style="color:red; display: none;"> </span>
                 </div>
   
-                <button onclick="myFunction()" class="btn btn-outline-light btn-lg px-5" type="submit"> Submit</button>
+                <button onclick="changePassword()" class="btn btn-outline-light btn-lg px-5" type="submit"> Submit</button>
 
                 <div class="d-flex justify-content-center text-center mt-4 pt-1">
                   <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
                   <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
                   <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
                 </div>
-  
               </div>
   
             </div>
@@ -167,38 +171,123 @@ div.card{
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twilio.js/1.2.0/twilio.min.js" integrity="sha512-EZb0O0PmyoxKEre0zjfVz47sLzYCPi27WxG9g/qva4QO9VBPongOGpFUbxDu/h8ViL7u5sRWGkVKpCkRiijceQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twilio.js/1.2.0/twilio.min.js" integrity="sha512-EZb0O0PmyoxKEre0zjfVz47sLzYCPi27WxG9g/qva4QO9VBPongOGpFUbxDu/h8ViL7u5sRWGkVKpCkRiijceQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <script>
-  const accountSid = 'AC709689f2d0e73739a3e14b117e6405f6';
-  const authToken = 'fe5be7bad7cfc3accdbe4287c01cbfb7';
-  $.ajax({
-      type: 'POST',
-      url: 'https://api.twilio.com/2010-04-01/Accounts/' + accountSid + '/Messages.json',
-      data: {
-          "To" : "+639559160218",
-          "From" : "+14157693206",
-          "Body" : "Hello World"
-      },
-      beforeSend: function (xhr) {
-          xhr.setRequestHeader ("Authorization", "Basic " + btoa(accountSid + ':' + authToken));
-      },
-      success: function(data) {
-          console.log(data);
-      },
-      error: function(data) {
-          console.log(data);
-      }
-  });
+  // Import the Supabase client
+  // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
+  const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
 
-  function myFunction() {
-  var txt;
-  if (confirm("Password reset successfully!")) {
-    txt = "OK";
-  } else {
-    txt = "Cancel";
+  // Create a Supabase client
+  const database = supabase.createClient(supabaseUrl, supabaseKey);
+
+  var otp = '';
+  var user = null;
+
+  async function generateOTP() {   
+
+      // Check if phonenum exist
+    const userPhoneNum = document.getElementById('phoneNum').value;
+
+    const { data, error } = await database.from('testing').select().eq('phoneNum', userPhoneNum).limit(1);
+    
+    if(data.length > 0) {
+      var digits = '0123456789'; 
+      let OTP = ''; 
+      for (let i = 0; i < 6; i++ ) { 
+          OTP += digits[Math.floor(Math.random() * 10)]; 
+      } 
+      const accountSid = 'AC709689f2d0e73739a3e14b117e6405f6';
+      const authToken = '1adcf22ae8019c3953f0f21822b1dcd2';
+      otp = OTP; 
+      user = data;
+      $.ajax({
+          type: 'POST',
+          url: 'https://api.twilio.com/2010-04-01/Accounts/' + accountSid + '/Messages.json',
+          data: {
+              "To" : userPhoneNum.replace('09', '+639'),
+              "From" : "+14157693206",
+              "Body" : "OTP Code: " + otp 
+          },
+          beforeSend: function (xhr) {
+              xhr.setRequestHeader ("Authorization", "Basic " + btoa(accountSid + ':' + authToken));
+          },
+          success: function(data) {
+          },
+          error: function(data) {
+          }
+      });
+    } else {
+      alert('Phone number not found in database');
+    }
+
+      
+  } 
+
+  async function changePassword() {
+    const userPhoneNum = document.getElementById('phoneNum').value;
+    const userCode = document.getElementById('code').value;
+    const userPassword = document.getElementById('password').value;
+    const userRePassword = document.getElementById('repassword').value;
+
+    if(validateForm()) {
+      if(otp != userCode) {
+        document.getElementById("otp").innerHTML = "**Invalid OTP!";  
+        document.getElementById("otp").style.display = "block";
+      } else {
+        const { data } = await database
+          .from('testing')
+          .update({ password: userRePassword })
+          .eq('phoneNum', userPhoneNum);
+          alert('Successfully Password Changed!');
+      }
+    } 
   }
-  document.getElementById("pass").innerHTML = txt;
-}
+
+  function validateForm() {  
+    //collect form data in JavaScript variables  
+    var pw1 = document.getElementById("password").value;  
+    var pw2 = document.getElementById("repassword").value;    
+    document.getElementById("passwordLabel").style.display = "none";
+    document.getElementById("rePasswordLabel").style.display = "none";
+    //check empty password field  
+    if(pw1 == "") {  
+      document.getElementById("passwordLabel").innerHTML = "**Fill the password please!";  
+      document.getElementById("passwordLabel").style.display = "block";
+      return false;  
+    }  
+    
+    //check empty confirm password field  
+    if(pw2 == "") {  
+      document.getElementById("rePasswordLabel").innerHTML = "**Enter the password please!"; 
+      document.getElementById("rePasswordLabel").style.display = "block"; 
+      return false;  
+    }   
+     
+    //minimum password length validation  
+    if(pw1.length < 8) {  
+      document.getElementById("passwordLabel").innerHTML = "**Password length must be atleast 8 characters"; 
+      document.getElementById("passwordLabel").style.display = "block";  
+      return false;  
+    }  
+  
+    //maximum length of password validation  
+    if(pw1.length > 15) {  
+      document.getElementById("passwordLabel").innerHTML = "**Password length must not exceed 15 characters";  
+      document.getElementById("passwordLabel").style.display = "block";  
+      return false;  
+    }  
+    
+    if(pw1 != pw2) {  
+      document.getElementById("rePasswordLabel").innerHTML = "**Passwords are not same";  
+      document.getElementById("rePasswordLabel").style.display = "block";
+      return false;  
+    } else {  
+      return true;
+    }  
+ }  
+
 </script>
 
 </html> 
