@@ -56,7 +56,7 @@
                     <h3 class="fw-normal mb-5" style="color: #000000;">Your Information</h3>
 
                     <div class="mb-4 pb-2">
-                      <select class="select" id="resStat">
+                      <select class="select form-control" id="resStat">
                         <option hidden>Status</option>
                         <option value="Current Resident">Current Resident</option>
                         <option value="Previous Resident">Previous Resident</option>
@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="mb-4 pb-2">
-                      <select class="select" id="civilstatus">
+                      <select class="select  form-control" id="civilstatus">
                         <option hidden>Civil Status</option>
                         <option value="Single">Single</option>
                         <option value="Married">Married</option>
@@ -108,7 +108,7 @@
                       </div>
 
                       <div class="form-outline">
-                        <input type="text" name="pass" id="pass" class="form-control form-control-lg">
+                        <input type="password" name="pass" id="pass" class="form-control form-control-lg">
                         <label class="form-label" for="pass">Enter new password</label>
                       </div>
                     </div>
@@ -458,9 +458,7 @@
       var civilOptions = civil.options;
       var civilStatus = civilOptions[civilSelectedIndex].value;
 
-      console.log(username)
-      console.log(password)
-      const { data, error } = await database
+      let { data, error } = await database
         .from('testing')
         .insert([
           {
@@ -476,11 +474,23 @@
             phoneNum: phoneNum,
             emergencyNum: emerNum,
             residentStatus: resStatus,
-            civilStatus: civilStatus
+            civilStatus: civilStatus,
+            role: 2,
           },
-        ])
-
-      alert("New User Created!");
+      ]).select('*');
+  
+      if(data?.length > 0) {
+      // InsertLog 
+        const { xx, error } = await database
+        .from('audit')
+        .insert([
+          {
+            user_id : data[0].id,
+            description : data[0].username + " is registered!",
+            page : 'registration',
+          },
+        ]);
+      }
       window.location.href = 'get-started.html'
     }
   </script>

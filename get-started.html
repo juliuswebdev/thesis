@@ -207,13 +207,27 @@
 
     if(userPhoneNum == 'admin') {
       const { data, error } = await database.from('testing').select().eq('password', userPassword);
-      console.log('data', data);
-      console.log('error', error);
+      
 
       if(data.length > 0) {
           const role = data[0].role;
           if(role == 1) {
-            localStorage.setItem("userDetails", JSON.stringify(data[0]));
+            var userData = JSON.stringify(data[0]);
+            localStorage.setItem("userDetails", userData);
+
+            // InsertLog 
+            if(userData) {   
+              const { data, error } = await database
+              .from('audit')
+              .insert([
+                {
+                  user_id : JSON.parse(userData).id,
+                  description : JSON.parse(userData).username + " is Logged-in!",
+                  page : 'login',
+                },
+              ]);
+            }
+
             window.location.href = 'BAMOS-DASHBOARD/template/bamos-dashb-welcome-page.html';
           } else {
             alert('Invalid Role.');
@@ -224,12 +238,25 @@
       }
     } else {
       const { data, error } = await database.from('testing').select().eq('phoneNum', userPhoneNum).eq('password', userPassword);
-      console.log('data', data);
-      console.log('error', error);
+
       if(data.length > 0) {
         const role = data[0].role;
         if(role == 2) {
-          localStorage.setItem("userDetails", JSON.stringify(data[0]));
+          var userData = JSON.stringify(data[0]);
+          localStorage.setItem("userDetails", userData);
+
+          // InsertLog 
+          if(userData) {   
+            const { data, error } = await database
+            .from('audit')
+            .insert([
+              {
+                user_id : JSON.parse(userData).id,
+                description : JSON.parse(userData).username + " is Logged-in!",
+                page : 'login'
+              },
+            ]);
+          }
           window.location.href = 'registration-form1.html';
         } else {
           alert('Invalid Role.');
@@ -239,10 +266,6 @@
       }
     }
 
-
-
-
-    
   }
 
   async function getUserByUsername(username, passwordInput) {
