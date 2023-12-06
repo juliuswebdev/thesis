@@ -268,15 +268,15 @@ $(function() {
     }
   }
   // Get context with jQuery - using jQuery's .get() method.
-  if ($("#barChart").length) {
-    var barChartCanvas = $("#barChart").get(0).getContext("2d");
-    // This will get the first returned node in the jQuery collection.
-    var barChart = new Chart(barChartCanvas, {
-      type: 'bar',
-      data: data,
-      options: options
-    });
-  }
+  // if ($("#barChart").length) {
+  //   var barChartCanvas = $("#barChart").get(0).getContext("2d");
+  //   // This will get the first returned node in the jQuery collection.
+  //   var barChart = new Chart(barChartCanvas, {
+  //     type: 'bar',
+  //     data: data,
+  //     options: options
+  //   });
+  // }
 
   if ($("#lineChart").length) {
     var lineChartCanvas = $("#lineChart").get(0).getContext("2d");

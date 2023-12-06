@@ -282,7 +282,7 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/tables/bamos-table.html">See all tables</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/tables/bamos-users.html">See all tables</a></li>
               </ul>
             </div>
           </li>
@@ -295,21 +295,28 @@
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Line chart</h4>
-                  <canvas id="lineChart"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Bar chart</h4>
+                  <h4 class="card-title">
+                    Employment Status By Gender &nbsp;&nbsp;&nbsp;&nbsp;
+                    <select id="employment_status">
+                      <option value="1">Employed</option>
+                      <option value="2">Not Employed</option>
+                    </select>
+                  </h4>
                   <canvas id="barChart"></canvas>
                 </div>
               </div>
             </div>
+            <!-- <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Line chart</h4>
+                  <canvas id="lineChart"></canvas>
+                </div>
+              </div>
+            </div> -->
+            
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -344,7 +351,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
@@ -377,6 +384,108 @@
   <!-- Custom js for this page-->
   <script src="../../js/chart.js"></script>
   <!-- End custom js for this page-->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
+    const database = supabase.createClient(supabaseUrl, supabaseKey);
+
+    async function getData(isEmployed = 1) {
+      var data = [];
+
+      var { data, error } = await database.from('testing').select(`
+        *,
+        miyembro ( kasarian, Employed )
+      `).eq('role', 2);
+
+      var barData = [];
+      barData['Male'] = 0;
+      barData['Female'] = 0;
+      barData['Prefer_not_to_say'] = 0;
+
+      console.log('data', data);
+
+      for(var x = 0; x < data.length; x++) {
+        if(data[x].miyembro.length > 0) {
+            for(var y = 0; y < data[x].miyembro.length; y++) {
+              var isEmployee = data[x].miyembro[y].Employed;
+              var gender = data[x].miyembro[y].kasarian;
+              var condition = '';
+              if(isEmployed == 1) {
+                condition = 'isEmployee != null';
+              } else {
+                condition = 'isEmployee == null';
+              }
+              if(eval(condition)) {
+                barData[gender] = barData[gender] + 1;
+              }
+            }
+        }
+      }
+
+      var barChartData = {
+        labels: ["Male", "Female", "Prefer not to say"],
+        datasets: [{
+          label: '# of Votes',
+          data: [barData['Male'], barData['Female'], barData['Prefer_not_to_say']],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      barChart(barChartData, options);
+
+    }
+
+    getData();
+
+    $('#employment_status').change(function() {
+      var value = $(this).val();
+      getData(value);
+    });
+
+    
+    function barChart(data, options) {
+      if ($("#barChart").length) {
+        var barChartCanvas = $("#barChart").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        var barChart = new Chart(barChartCanvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
+    
+
+  </script>
 </body>
 
 </html>
