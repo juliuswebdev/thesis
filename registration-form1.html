@@ -60,8 +60,12 @@
           <label>Birth Date</label>
           <input type="date" placeholder="Enter birth date" id="birthD"  />
         </div>
+        
+        
       </div>
+        
       </div>
+      
       <div class="gender-box">
         <h3>Gender</h3>
         <div class="gender-option">
@@ -74,7 +78,16 @@
             <label for="check-other">Prefer not to say</label>
           </div>
         </div>
+        
       </div>
+
+      <div class="input-box">
+          <div class="checkbox">
+           
+            <label> <input type="checkbox" value="isEmployee" name="isEmployee" style="right: 426px; "> Employed</label>
+          </div>
+        </div>
+      
       <div class="input-box member">
         <label>Family members</label>
         <input type="text" placeholder="Member 1" id="member1" />
@@ -107,6 +120,7 @@
             </select>
           </div>
         </div>
+        
         <div class="column">
           <input type="text" placeholder="Religion" id="religion" />
           <select id="edAttain" class="select-box">
@@ -136,6 +150,10 @@
               <option value="15k-25k">15k-25k</option>
               <option value="30k+">30k+</option>
             </select>
+            
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="isEmployee" name="isEmployee2"> Employed</label>
           </div>
         </div>
         <br>
@@ -201,8 +219,13 @@
                 <option value="15k-25k">15k-25k</option>
                 <option value="30k+">30k+</option>
               </select>
+              
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="isEmployee" name="isEmployee3"> Employed</label>
             </div>
           </div>
+         
           <br>
           <br>
           <div class="input-box member">
@@ -266,6 +289,9 @@
                   <option value="15k-25k">15k-25k</option>
                   <option value="30k+">30k+</option>
                 </select>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" value="isEmployee" name="isEmployee4"> Employed</label>
               </div>
             </div>
             <br>
@@ -370,7 +396,7 @@
   }
 
   .input-box input:focus {
-    box-shadow: 0 1px 0 #120d0d;
+    /* box-shadow: 0 1px 0 #120d0d; */
   }
 
   .form .column {
@@ -505,15 +531,13 @@
   document.querySelector('#submit').onclick = function(e) {
     e.preventDefault();
     addMem();
-    const userArray = ["Obaseki",25]
-    localStorage.setItem('user', JSON.stringify(userArray));
-
+    
   }
 
   async function addMem() {
 
     
-    var userId = userData.id; 
+
     let repName = document.getElementById("fullname").value;
     let repAdd = document.getElementById("completeAdd").value;
     let repHouse = document.getElementById("houseNum").value;
@@ -529,9 +553,11 @@
 
     
     
+   
 
-    $('#purok').val();
-    $('#sitio').val();
+    let purok =  $('#purok').val();
+    let sitio = $('#sitio').val();
+    let employee = $('[name="isEmployee"]:checked').val();
 
     //Family Array 1
 
@@ -547,10 +573,12 @@
     $('#stay').val();
     $('#philId').val();
     $('#incomePick').val();
+    $('[name="isEmployee2"]:checked').val();
+    
 
     let family1 = new Array;
     family1.push({
-    "member1" :  $('#member1').val(),
+    "member" :  $('#member1').val(),
     "bday": $('#bday').val(),
     "age":  $('#age').val(),
     "relation": $('#relation').val(),
@@ -560,7 +588,8 @@
     "genderPick":$('#genderPick').val(),
     "stay": $('#stay').val(),
     "philId": $('#philId').val(),
-    "incomePick":$('#incomePick').val()
+    "incomePick":$('#incomePick').val(),
+    "employee": $('[name="isEmployee2"]:checked').val()
     });
 
     //Family Array 2
@@ -577,20 +606,22 @@
     $('#stay2').val();
     $('#philId2').val();
     $('#incomePick2').val();
+    $('[name="isEmployee3"]:checked').val();
 
     let family2 = new Array;
     family2.push({
-    "member2" :  $('#member2').val(),
-    "bday2": $('#bday2').val(),
-    "age2":  $('#age2').val(),
-    "relation2": $('#relation2').val(),
-    "civilStat2": $('#civilStat2').val(),
-    "edAttain2": $('#edAttain2').val(),
-    "sourceIncome2": $('#sourceIncome2').val(),
-    "genderPick2":$('#genderPick2').val(),
-    "stay2": $('#stay2').val(),
-    "philId2": $('#philId2').val(),
-    "incomePick2":$('#incomePick2').val()
+    "member" :  $('#member2').val(),
+    "bday": $('#bday2').val(),
+    "age":  $('#age2').val(),
+    "relation": $('#relation2').val(),
+    "civilStat": $('#civilStat2').val(),
+    "edAttain": $('#edAttain2').val(),
+    "sourceIncome": $('#sourceIncome2').val(),
+    "genderPick":$('#genderPick2').val(),
+    "stay": $('#stay2').val(),
+    "philId": $('#philId2').val(),
+    "incomePick":$('#incomePick2').val(),
+    "employee": $('[name="isEmployee3"]:checked').val()
   });
 
    //Family Array 2
@@ -607,20 +638,22 @@
     $('#stay3').val();
     $('#philId3').val();
     $('#incomePick3').val();
+    $('[name="isEmployee4"]:checked').val();
 
     let family3 = new Array;
     family3.push({
-    "member3" :  $('#member3').val(),
-    "bday3": $('#bday3').val(),
-    "age3":  $('#age3').val(),
-    "relation3": $('#relation3').val(),
-    "civilStat3": $('#civilStat2').val(),
-    "edAttain3": $('#edAttain2').val(),
-    "sourceIncome3": $('#sourceIncome2').val(),
-    "genderPick3":$('#genderPick2').val(),
-    "stay3": $('#stay2').val(),
-    "philId3": $('#philId2').val(),
-    "incomePick3":$('#incomePick2').val()
+    "member" :  $('#member3').val(),
+    "bday": $('#bday3').val(),
+    "age":  $('#age3').val(),
+    "relation": $('#relation3').val(),
+    "civilStat": $('#civilStat2').val(),
+    "edAttain": $('#edAttain2').val(),
+    "sourceIncome": $('#sourceIncome2').val(),
+    "genderPick":$('#genderPick2').val(),
+    "stay": $('#stay2').val(),
+    "philId": $('#philId2').val(),
+    "incomePick":$('#incomePick2').val(),
+    "employee": $('[name="isEmployee4"]:checked').val()
   });
 
     const { data, error } = await database
@@ -637,6 +670,11 @@
           Family_member_2:  family2,
           Family_member_3:  family3,
           user_id: userId,
+          Sitio: sitio,
+          Purok: purok,
+          Employed: employee
+
+          
           
         },
       ])
