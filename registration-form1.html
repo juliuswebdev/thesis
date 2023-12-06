@@ -10,7 +10,8 @@
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <link href="assets/css/style.css" />
+  <!-- <link href="/assets/css/style.css" /> -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -18,15 +19,15 @@
     <header>BAMOS FAMILY REGISTRATION FORM <br>
       <h6>BARANGAY BAHAY PARE FAMILY PROFILE</h6>
     </header>
-    <form class="form">
+    <form class="form" >
       <div class="input-box">
         <label>Name</label>
-        <input type="text" id="fullname" placeholder="Enter your full name"  />
+        <input type="text" id="fullname" placeholder="Enter your full name" value="" />
       </div>
 
       <div class="input-box">
         <label>Address</label>
-        <input type="text" id="completeAdd" placeholder="Enter your full address"  />
+        <input type="text" id="completeAdd" placeholder="Enter your full address" />
       </div>
 
       <div class="column">
@@ -59,8 +60,12 @@
           <label>Birth Date</label>
           <input type="date" placeholder="Enter birth date" id="birthD"  />
         </div>
+        
+        
       </div>
+        
       </div>
+      
       <div class="gender-box">
         <h3>Gender</h3>
         <div class="gender-option">
@@ -69,11 +74,20 @@
             <label for="check-male">Male &emsp;&emsp;</label>
             <input type="radio" id="check-female" name="gender" value="Female" />
             <label for="check-female">Female &emsp;&emsp;</label>
-            <input type="radio" id="check-other" name="gender" value="Prefer not to say" />
+            <input type="radio" id="check-other" name="gender" value="Prefer_not_to_say" />
             <label for="check-other">Prefer not to say</label>
           </div>
         </div>
+        
       </div>
+
+      <div class="input-box">
+          <div class="checkbox">
+           
+            <label> <input type="checkbox" value="isEmployee" name="isEmployee" style="right: 426px; "> Employed</label>
+          </div>
+        </div>
+      
       <div class="input-box member">
         <label>Family members</label>
         <input type="text" placeholder="Member 1" id="member1" />
@@ -106,6 +120,7 @@
             </select>
           </div>
         </div>
+        
         <div class="column">
           <input type="text" placeholder="Religion" id="religion" />
           <select id="edAttain" class="select-box">
@@ -121,7 +136,7 @@
               <option hidden>Gender</option>
               <option value="Female">Female</option>
               <option value="Male">Male</option>
-              <option value="Prefer not to say">Prefer not to say</option>
+              <option value="Prefer_not_to_say">Prefer not to say</option>
             </select>
           </div>
         </div>
@@ -135,6 +150,10 @@
               <option value="15k-25k">15k-25k</option>
               <option value="30k+">30k+</option>
             </select>
+            
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="isEmployee" name="isEmployee2"> Employed</label>
           </div>
         </div>
         <br>
@@ -186,7 +205,7 @@
                 <option hidden>Gender</option>
                 <option value="Female">Female</option>
                 <option value="Male">Male</option>
-                <option value="Prefer not to say">Prefer not to say</option>
+                <option value="Prefer_not_to_say">Prefer not to say</option>
               </select>
             </div>
           </div>
@@ -200,8 +219,13 @@
                 <option value="15k-25k">15k-25k</option>
                 <option value="30k+">30k+</option>
               </select>
+              
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="isEmployee" name="isEmployee3"> Employed</label>
             </div>
           </div>
+         
           <br>
           <br>
           <div class="input-box member">
@@ -251,7 +275,7 @@
                   <option hidden>Gender</option>
                   <option value="Female">Female</option>
                   <option value="Male">Male</option>
-                  <option value="Prefer not to say">Prefer not to say</option>
+                  <option value="Prefer_not_to_say">Prefer not to say</option>
                 </select>
               </div>
             </div>
@@ -265,6 +289,9 @@
                   <option value="15k-25k">15k-25k</option>
                   <option value="30k+">30k+</option>
                 </select>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" value="isEmployee" name="isEmployee4"> Employed</label>
               </div>
             </div>
             <br>
@@ -293,14 +320,16 @@
           </div>
           <div>
             <div class="column">
-              <button type="button" onclick="clr()">Clear Form</button>
-              <button type="submit" onclick="addMem()">Next</button>
+              <input type="hidden" id="requiredForm" value="0" /> 
+              <button type="button" class="clear">Clear Form</button>
+              <button type="submit" id="submit">Next</button>
             </div>
           </div>
         </div>
       </div>
     </form>
   </section>
+  <script src="form-global.js"></script>
 </body>
 
 
@@ -367,7 +396,7 @@
   }
 
   .input-box input:focus {
-    box-shadow: 0 1px 0 #120d0d;
+    /* box-shadow: 0 1px 0 #120d0d; */
   }
 
   .form .column {
@@ -461,8 +490,15 @@
   }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script type="text/javascript">
   // Import the Supabase client
+  loadData();
+
+
+  function loadData() {
+     $('#fullname').val(userData.lastname + ', ' +userData.firstname+' '+userData.middlename);
+  }
 
   // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
   const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
@@ -492,22 +528,133 @@
   // Call the checkConnection function
   checkConnection();
 
+  document.querySelector('#submit').onclick = function(e) {
+    e.preventDefault();
+    addMem();
+    
+  }
+
   async function addMem() {
-    let repName = document.getElementById("fullname").innerText;
-    let repAdd = document.getElementById("completeAdd").text;
-    let repHouse = document.getElementById("houseNum").innerText;
-    let repBD = document.getElementById("birthD").outerText;
 
-    var ress = document.getElementById("relations");
-    var ressSelectedIndex = ress.selectedIndex;
-    var ressOptions = ress.options;
-    var relate = ressOptions[ressSelectedIndex].text;
+    
 
-    var gen = document.getElementsByName('gender');
-    for (i = 0; i < gen.length; i++) {
-      if (gen[i].checked) {
-      }
-    }
+    let repName = document.getElementById("fullname").value;
+    let repAdd = document.getElementById("completeAdd").value;
+    let repHouse = document.getElementById("houseNum").value;
+    let repBD = document.getElementById("birthD").value;
+    let relations = document.querySelector('#relations').value;
+    let gen = '';
+    if($('[type="radio"]:checked').length) {
+       gen = document.querySelector('input[name="gender"]:checked').value;
+    } else {
+      $('[type="radio"]').addClass('error');
+      return false;
+    }      
+
+    
+    
+   
+
+    let purok =  $('#purok').val();
+    let sitio = $('#sitio').val();
+    let employee = $('[name="isEmployee"]:checked').val();
+
+    //Family Array 1
+
+    $('#member1').val();
+    $('#bday').val();
+    $('#age').val();
+    $('#relation').val();
+    $('#civilStat').val();
+    $('#religion').val();
+    $('#edAttain').val();
+    $('#sourceIncome').val();
+    $('#genderPick').val();
+    $('#stay').val();
+    $('#philId').val();
+    $('#incomePick').val();
+    $('[name="isEmployee2"]:checked').val();
+    
+
+    let family1 = new Array;
+    family1.push({
+    "member" :  $('#member1').val(),
+    "bday": $('#bday').val(),
+    "age":  $('#age').val(),
+    "relation": $('#relation').val(),
+    "civilStat": $('#civilStat').val(),
+    "edAttain": $('#edAttain').val(),
+    "sourceIncome": $('#sourceIncome').val(),
+    "genderPick":$('#genderPick').val(),
+    "stay": $('#stay').val(),
+    "philId": $('#philId').val(),
+    "incomePick":$('#incomePick').val(),
+    "employee": $('[name="isEmployee2"]:checked').val()
+    });
+
+    //Family Array 2
+
+    $('#member2').val();
+    $('#bday2').val();
+    $('#age2').val();
+    $('#relation2').val();
+    $('#civilStat2').val();
+    $('#religion2').val();
+    $('#edAttain2').val();
+    $('#sourceIncome2').val();
+    $('#genderPick2').val();
+    $('#stay2').val();
+    $('#philId2').val();
+    $('#incomePick2').val();
+    $('[name="isEmployee3"]:checked').val();
+
+    let family2 = new Array;
+    family2.push({
+    "member" :  $('#member2').val(),
+    "bday": $('#bday2').val(),
+    "age":  $('#age2').val(),
+    "relation": $('#relation2').val(),
+    "civilStat": $('#civilStat2').val(),
+    "edAttain": $('#edAttain2').val(),
+    "sourceIncome": $('#sourceIncome2').val(),
+    "genderPick":$('#genderPick2').val(),
+    "stay": $('#stay2').val(),
+    "philId": $('#philId2').val(),
+    "incomePick":$('#incomePick2').val(),
+    "employee": $('[name="isEmployee3"]:checked').val()
+  });
+
+   //Family Array 2
+
+   $('#member3').val();
+    $('#bday3').val();
+    $('#age3').val();
+    $('#relation3').val();
+    $('#civilStat3').val();
+    $('#religion3').val();
+    $('#edAttain3').val();
+    $('#sourceIncome3').val();
+    $('#genderPick3').val();
+    $('#stay3').val();
+    $('#philId3').val();
+    $('#incomePick3').val();
+    $('[name="isEmployee4"]:checked').val();
+
+    let family3 = new Array;
+    family3.push({
+    "member" :  $('#member3').val(),
+    "bday": $('#bday3').val(),
+    "age":  $('#age3').val(),
+    "relation": $('#relation3').val(),
+    "civilStat": $('#civilStat2').val(),
+    "edAttain": $('#edAttain2').val(),
+    "sourceIncome": $('#sourceIncome2').val(),
+    "genderPick":$('#genderPick2').val(),
+    "stay": $('#stay2').val(),
+    "philId": $('#philId2').val(),
+    "incomePick":$('#incomePick2').val(),
+    "employee": $('[name="isEmployee4"]:checked').val()
+  });
 
     const { data, error } = await database
       .from('miyembro')
@@ -515,15 +662,28 @@
         {
           pinuno: repName,
           nakatira: repAdd,
-          sinoka: relate,
+          sinoka: relations,
           bahayNumero: repHouse,
           isinilang: repBD,
-          kasarian: gen
+          kasarian: gen,
+          Family_member_1:  family1,
+          Family_member_2:  family2,
+          Family_member_3:  family3,
+          user_id: userId,
+          Sitio: sitio,
+          Purok: purok,
+          Employed: employee
+
+          
+          
         },
       ])
+      console.log(data);
       alert("Updated");
       window.location.href = 'registration-form2.html'
   }
+
+  
 
 </script>
 

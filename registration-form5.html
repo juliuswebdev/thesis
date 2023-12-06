@@ -9,7 +9,8 @@
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="/assets/css/style.css" /> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   </head>
   <body>
     <section class="container">
@@ -22,14 +23,14 @@
 
         <div class="column">
             <div class="select-box">
-              <select>
+              <select id="kabuuan">
                 <option hidden>A. Kabuuang bilang ng Mag-asawang Nagsasama</option>
                 <option>Kasal</option>
                 <option>Live-in</option>
               </select>
           </div>
           <div class="select-box">
-            <select>
+            <select id="pagbubuntis">
               <option hidden>B. Bilang ng Ipinagbuntis</option>
               <option>Lalaki</option>
               <option>Babae</option>
@@ -42,14 +43,14 @@
 
           <div class="column">
             <div class="select-box">
-              <select>
+              <select id="balak">
                 <option hidden>C. May Balak pa bang mag-anak?</option>
                 <option>Mayroon</option>
                 <option>Wala</option>
               </select>
           </div>
           <div class="select-box">
-            <select>
+            <select id="nagpapagamot">
               <option hidden>D. Kanino nagpapagamot?</option>
               <option>Ospital/Klinika</option>
               <option>Health Center</option>
@@ -58,7 +59,7 @@
             </select>
         </div> 
         <div class="select-box">
-            <select>
+            <select id="kalagayan">
               <option hidden>E. Kalagayan ng pagiging Ina</option>
               <option>Nagpapasuso</option>
               <option>Nagdadalantao</option>
@@ -74,19 +75,19 @@
                 </div>
                 <div class="column">
                     <div class="checkbox">
-                      <label><input type="checkbox" value="">IUD</label>
+                      <label><input type="checkbox" value="IUD">IUD</label>
                     </div>
                     <br>
                     <div class="checkbox">
-                      <label><input type="checkbox" value="">Condom</label>
+                      <label><input type="checkbox" value="Condom">Condom</label>
                     </div>
                     <br>
                     <div class="checkbox">
-                      <label><input type="checkbox" value="">DMPA/INJ</label>
+                      <label><input type="checkbox" value="DMPA/INJ">DMPA/INJ</label>
                     </div>
                     <br>
                     <div class="checkbox">
-                      <label><input type="checkbox" value="">Implant</label>
+                      <label><input type="checkbox" value="Implant">Implant</label>
                     </div>
                     <br>
                     </div> 
@@ -94,22 +95,22 @@
               
               <div class="column">
                 <div class="checkbox">
-                  <label><input type="checkbox" value="">SDM</label>
+                  <label><input type="checkbox" value="SDM">SDM</label>
                 </div>
                 <br>
                 <br>
                 <div class="checkbox">
-                  <label><input type="checkbox" value="">BTL</label>
+                  <label><input type="checkbox" value="BTL">BTL</label>
                 </div>
                 <br>
                 <br>
                 <div class="checkbox">
-                  <label><input type="checkbox" value="">VAS</label>
+                  <label><input type="checkbox" value="VAS">VAS</label>
                 </div>
                 <br>
                 <br>
                 <div class="checkbox">
-                  <label><input type="checkbox" value="">PII</label>
+                  <label><input type="checkbox" value="PII">PII</label>
                 </div>
                 <br>
                 <br>
@@ -118,27 +119,27 @@
 
               <div class="column">
                 <div class="checkbox">
-                  <label><input type="checkbox" value="">CMM</label>
+                  <label><input type="checkbox" value="CMM">CMM</label>
                 </div>
                 <br>
                 <br>
                 <div class="checkbox">
-                  <label><input type="checkbox" value="">BST</label>
+                  <label><input type="checkbox" value="BST">BST</label>
                 </div>
                 <br>
                 <br>
                 <div class="checkbox">
-                  <label><input type="checkbox" value="">STM</label>
+                  <label><input type="checkbox" value="STM">STM</label>
                 </div>
                 <br>
                 <br>
                 <div class="checkbox">
-                  <label><input type="checkbox" value="">LAM</label>
+                  <label><input type="checkbox" value="LAM">LAM</label>
                 </div>
                 <br>
                 <br>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="">Wala</label>
+                    <label><input type="checkbox" value="Wala">Wala</label>
                   </div>
                   <br>
                   <br>
@@ -147,12 +148,13 @@
                 <br>
 
         <div class="column">
-        <button>Previous Page</button>
-        <button>Clear Form</button>
-        <button><a href="registration-form6.html"></a>Next</button>
+          <button type="button"><a href="registration-form4.html">Previous Page</a></button>
+        <button class="clear">Clear Form</button>
+        <button type="submit" id="submit5">Next</button>
         </div>
       </form>
     </section>
+    <script src="form-global.js"></script>
   </body>
 
   <style>
@@ -295,4 +297,83 @@
       }
     }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script type="text/javascript">
+    
+      // Import the Supabase client
+    
+      // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
+      const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
+      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
+    
+      // Create a Supabase client
+      const database = supabase.createClient(supabaseUrl, supabaseKey);
+    
+      // Function to check the connection status and show an alert
+      async function checkConnection() {
+        try {
+          // Try to make a request to Supabase to check the connection
+          const { data, error } = await database.from('kalusuganBuntis').select();
+    
+          // If there's an error, log it
+          if (error) {
+            console.error('Error connection! Please try again.', error.message);
+          } else {
+            // If successful, show an alert
+            alert('Connection secured!');
+          }
+        } catch (error) {
+          console.error('Error:', error.message);
+        }
+      }
+    
+      // Call the checkConnection function
+      checkConnection();
+    
+    
+    
+      document.querySelector('#submit5').onclick = function(e){
+        e.preventDefault();
+        nextPage4();
+    
+      }
+    
+      async function nextPage4() {
+    
+      let kabuuan = $('#kabuuan').val();
+      let pagbubuntis =$('#pagbubuntis').val();
+      let balak =$('#balak').val();
+      let kabnagpapagamotuuan =$('#nagpapagamot').val();
+      let kalagayan =$('#kalagayan').val();
+
+
+
+        
+    var mgabuntis = new Array;
+
+      $('[type="checkbox"]:checked').each(function() {
+        mgabuntis.push($(this).val());
+      });
+
+        
+        
+        const { data, error } = await database
+          .from('kalusuganBuntis')
+          .insert([
+            {
+              MagAsawangNagsasama: kabuuan,
+              BilangngIpinagbuntis: pagbubuntis,
+              MayBalakpaMaganak: balak,
+              Nagpapagamot: kabnagpapagamotuuan,
+              Kalagayan: kalagayan,
+              FPmethod: mgabuntis,
+              user_id: userId
+            },
+          ])
+    
+        alert("New User Created!");
+        window.location.href = 'registration-form6.html'
+      }
+    </script>
 </html>

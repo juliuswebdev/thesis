@@ -9,7 +9,8 @@
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="/assets/css/style.css" /> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   </head>
   <body>
     <section class="container">
@@ -22,14 +23,14 @@
           <div class="input-box member">
             <label>Kasama sa bahay na May Kapansanan</label>
             <div class="column">
-            <input type="text" placeholder="Member 1"    />
-            <input type="date" placeholder="Kapanganakan"    />
+            <input type="text" placeholder="Member 1" id="member1"    />
+            <input type="date" placeholder="Kapanganakan"  id="kapanganakan1"  />
             </div>
             <div class="column">
-              <input type="number" placeholder="Edad"    />
-              <input type="text" placeholder="Kapansanan"   />
+              <input type="number" placeholder="Edad" id="edad1"   />
+              <input type="text" placeholder="Kapansanan" id="kapansanan1"  />
               <div class="select-box">
-                <select>
+                <select id="kasarian1">
                   <option hidden>Kasarian</option>
                   <option>Babae</option>
                   <option>Lalaki</option>
@@ -41,15 +42,37 @@
             <br>
 
             <div class="input-box member">
+              <label>Kasama sa bahay na May Kapansanan</label>
+              <div class="column">
+              <input type="text" placeholder="Member 2" id="member2"    />
+              <input type="date" placeholder="Kapanganakan"  id="kapanganakan2"  />
+              </div>
+              <div class="column">
+                <input type="number" placeholder="Edad" id="edad2"   />
+                <input type="text" placeholder="Kapansanan" id="kapansanan2"  />
+                <div class="select-box">
+                  <select id="kasarian2">
+                    <option hidden>Kasarian</option>
+                    <option>Babae</option>
+                    <option>Lalaki</option>
+                    <option>Iba pa</option>
+                  </select>
+  
+              </div>
+            </div>
+              <br>
+
+              <div class="input-box member">
+                <label>Kasama sa bahay na May Kapansanan</label>
                 <div class="column">
-                <input type="text" placeholder="Member 2"    />
-                <input type="date" placeholder="Kapanganakan"    />
+                <input type="text" placeholder="Member 3" id="member3"    />
+                <input type="date" placeholder="Kapanganakan"  id="kapanganakan3"  />
                 </div>
                 <div class="column">
-                  <input type="number" placeholder="Edad"    />
-                  <input type="text" placeholder="Kapansanan"   />
+                  <input type="number" placeholder="Edad" id="edad3"   />
+                  <input type="text" placeholder="Kapansanan" id="kapansanan3"  />
                   <div class="select-box">
-                    <select>
+                    <select id="kasarian3">
                       <option hidden>Kasarian</option>
                       <option>Babae</option>
                       <option>Lalaki</option>
@@ -59,37 +82,18 @@
                 </div>
               </div>
                 <br>
-
-                <div class="input-box member">
-                    <div class="column">
-                    <input type="text" placeholder="Member 3"    />
-                    <input type="date" placeholder="Kapanganakan"    />
-                    </div>
-                    <div class="column">
-                      <input type="number" placeholder="Edad"    />
-                      <input type="text" placeholder="Kapansanan"   />
-                      <div class="select-box">
-                        <select>
-                          <option hidden>Kasarian</option>
-                          <option>Babae</option>
-                          <option>Lalaki</option>
-                          <option>Iba pa</option>
-                        </select>
-        
-                    </div>
-                  </div>
-                    <br>
         
             
  
 
         <div class="column">
-        <button>Previous Page</button>
-        <button>Clear Form</button>
-        <button type="button"><a href="registration-form5.html">Next</a></button>
+          <button type="button"><a href="registration-form3.html">Previous Page</a></button>
+        <button class="clear">Clear Form</button>
+        <button type="submit" id="submit4">Next</button>
         </div>
       </form>
     </section>
+    <script src="form-global.js"></script>
   </body>
 
 <style>
@@ -224,4 +228,120 @@ body {
   }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script type="text/javascript">
+
+  // Import the Supabase client
+
+  // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
+  const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
+
+  // Create a Supabase client
+  const database = supabase.createClient(supabaseUrl, supabaseKey);
+
+  // Function to check the connection status and show an alert
+  async function checkConnection() {
+    try {
+      // Try to make a request to Supabase to check the connection
+      const { data, error } = await database.from('kalusuganPWD').select();
+
+      // If there's an error, log it
+      if (error) {
+        console.error('Error connection! Please try again.', error.message);
+      } else {
+        // If successful, show an alert
+        alert('Connection secured!');
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  }
+
+  // Call the checkConnection function
+  checkConnection();
+
+
+
+  document.querySelector('#submit4').onclick = function(e){
+    e.preventDefault();
+    nextPage3();
+
+  }
+
+  async function nextPage3() {
+
+    
+  //Family Array 1
+
+  $('#member1').val();
+    $('#kapanganakan1').val();
+    $('#edad1').val();
+    $('#kapansanan1').val();
+    $('#kasarian1').val();
+
+  //Family Array 2
+
+  $('#member2').val();
+    $('#kapanganakan2').val();
+    $('#edad2').val();
+    $('#kapansanan2').val();
+    $('#kasarian2').val();
+
+    //Family Array 2
+    
+  $('#member3').val();
+    $('#kapanganakan3').val();
+    $('#edad3').val();
+    $('#kapansanan3').val();
+    $('#kasarian3').val();
+
+
+    let familymem1 = new Array;
+    familymem1.push({
+    "member1" :  $('#member1').val(),
+    "kapanganakan1": $('#kapanganakan1').val(),
+    "edad1":  $('#edad1').val(),
+    "kapansanan1":  $('#kapansanan1').val(),
+    "kasarian1":  $('#kasarian1').val()
+    });
+
+    let familymem2 = new Array;
+    familymem2.push({
+    "member2" :  $('#member2').val(),
+    "kapanganakan2": $('#kapanganakan2').val(),
+    "edad2":  $('#edad2').val(),
+    "kapansanan2":  $('#kapansanan2').val(),
+    "kasarian2":  $('#kasarian2').val()
+  });
+
+  let familymem3 = new Array;
+  familymem3.push({
+    "member3" :  $('#member3').val(),
+    "kapanganakan3": $('#kapanganakan3').val(),
+    "edad3":  $('#edad3').val(),
+    "kapansanan3":  $('#kapansanan3').val(),
+    "kasarian3":  $('#kasarian3').val()
+  });
+
+
+
+
+    
+    const { data, error } = await database
+      .from('kalusuganPWD')
+      .insert([
+        {
+          Family_mem_1: familymem1,
+          Family_mem_2: familymem2,
+          Family_mem_3: familymem3,
+          user_id: userId
+        },
+      ])
+
+    alert("New User Created!");
+    window.location.href = 'registration-form5.html'
+  }
+</script>
 </html>

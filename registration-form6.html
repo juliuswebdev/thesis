@@ -9,7 +9,8 @@
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="/assets/css/style.css" /> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   </head>
   <body>
     <section class="container">
@@ -22,16 +23,16 @@
           <div class="input-box member">
             <label>A. Samahang Kinasaniban:</label>
             <div class="column">
-            <input type="text" placeholder="Organisasyon"   />
-            <input type="text" placeholder="Katungkulan"   />
+            <input type="text" placeholder="Organisasyon" name="organisasyon1"   />
+            <input type="text" placeholder="Katungkulan"  name="katungkulan1" />
             </div>
             <div class="column">
-                <input type="text" placeholder="Organisasyon"   />
-                <input type="text" placeholder="Katungkulan"   />
+                <input type="text" placeholder="Organisasyon" name="organisasyon2"  />
+                <input type="text" placeholder="Katungkulan"  name="katungkulan2" />
                 </div>
             <div class="column">
-                <input type="text" placeholder="Organisasyon"   />
-                <input type="text" placeholder="Katungkulan"   />
+                <input type="text" placeholder="Organisasyon" name="organisasyon3"  />
+                <input type="text" placeholder="Katungkulan"  name="katungkulan3" />
                 </div>
           </div>
             <br>
@@ -39,16 +40,16 @@
             <div class="input-box member">
                 <label>B. Kanino Sumasangguni kung may suliraning pambarangay?</label>
                 <div class="column">
-                <input type="text" placeholder=""   />
-                <input type="text" placeholder=""   />
+                <input type="text" placeholder=""  name="pambarangay" />
+                <input type="text" placeholder="" name="pambarangay"  />
                 </div>
                 <div class="column">
-                    <input type="text" placeholder=""   />
-                    <input type="text" placeholder=""   />
+                    <input type="text" placeholder="" name="pambarangay"  />
+                    <input type="text" placeholder="" name="pambarangay"  />
                     </div>
                 <div class="column">
-                    <input type="text" placeholder=""   />
-                    <input type="text" placeholder=""   />
+                    <input type="text" placeholder="" name="pambarangay"  />
+                    <input type="text" placeholder="" name="pambarangay"  />
                     </div>
               </div>
                 <br>
@@ -56,28 +57,29 @@
                 <div class="input-box member">
                     <label>C. Kanino Sumasangguni kung may suliraning pambayan?</label>
                     <div class="column">
-                    <input type="text" placeholder=""   />
-                    <input type="text" placeholder=""   />
+                    <input type="text" placeholder="" name="pambayan"  />
+                    <input type="text" placeholder="" name="pambayan"  />
                     </div>
                     <div class="column">
-                        <input type="text" placeholder=""   />
-                        <input type="text" placeholder=""   />
+                        <input type="text" placeholder=""  name="pambayan" />
+                        <input type="text" placeholder=""  name="pambayan" />
                         </div>
                     <div class="column">
-                        <input type="text" placeholder=""   />
-                        <input type="text" placeholder=""   />
+                        <input type="text" placeholder="" name="pambayan"  />
+                        <input type="text" placeholder="" name="pambayan"  />
                         </div>
                   </div>
                     <br>
         
 
         <div class="column">
-        <button>Previous Page</button>
-        <button>Clear Form</button>
-        <button type="button"><a href="get-started.html" >Submit</a></button>
+          <button type="button"><a href="registration-form5.html">Previous Page</a></button>
+        <button class="clear">Clear Form</button>
+        <button type="button" id="submit6"> Submit</button>
         </div>
       </form>
     </section>
+    <script src="form-global.js"></script>
   </body>
 
 <style>
@@ -212,4 +214,89 @@ body {
   }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script type="text/javascript">
+
+  // Import the Supabase client
+
+  // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
+  const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
+
+  // Create a Supabase client
+  const database = supabase.createClient(supabaseUrl, supabaseKey);
+
+  // Function to check the connection status and show an alert
+  async function checkConnection() {
+    try {
+      // Try to make a request to Supabase to check the connection
+      const { data, error } = await database.from('panlipunan').select();
+
+      // If there's an error, log it
+      if (error) {
+        console.error('Error connection! Please try again.', error.message);
+      } else {
+        // If successful, show an alert
+        alert('Connection secured!');
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  }
+
+  // Call the checkConnection function
+  checkConnection();
+
+
+
+  document.querySelector('#submit6').onclick = function(e){
+    e.preventDefault();
+    nextPage5();
+
+  }
+
+  async function nextPage5() {
+
+
+  var posisyon1  =  $('[name="organisasyon1"]').val() +','+ $('[name="katungkulan1"]').val();
+  var posisyon2 = $('[name="organisasyon2"]').val() +','+  $('[name="katungkulan2"]').val();
+  var posisyon3 =   $('[name="organisasyon3"]').val() +','+  $('[name="katungkulan3"]').val();
+
+  var finalpositions = [
+    posisyon1, posisyon2, posisyon3
+  ];
+
+ 
+  var pambarangay = new Array;
+  var pambayan = new Array;
+
+
+  var userId = userData.id;
+
+  
+  $('[name="pambarangay"]').each(function() {
+    pambarangay.push($(this).val());
+  });
+  $('[name="pambayan"]').each(function() {
+    pambayan.push($(this).val());
+  });
+ 
+    const { data, error } = await database
+      .from('panlipunan')
+      .insert([
+        {
+        
+          Pambarangay: JSON.stringify(pambarangay),
+          Pambayan: JSON.stringify(pambayan),
+          SamahangKinasaniban: JSON.stringify(finalpositions),
+          user_id: userId
+
+        },
+      ])
+
+    alert("New User Created!");
+    window.location.href = 'get-started.html'
+  }
+</script>
 </html>

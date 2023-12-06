@@ -10,7 +10,8 @@
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <link rel="stylesheet" href="style.css" />
+  <!-- <link rel="stylesheet" href="/assets/css/style.css" /> -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -30,15 +31,15 @@
             <option hidden>A. Lupang Kinatatayuan</option>
             <option value="Pag-aari">Pag-aari</option>
             <option value="Inuupahan">Inuupahan</option>
-            <option value="Iba pa">Iba pa</option>
+            <option value="Iba_pa">Iba pa</option>
           </select>
         </div>
         <div class="select-box">
-          <select>
+          <select id="bahayz">
             <option hidden>B. Bahay na Tinitirhan</option>
             <option value="Pag-aari">Pag-aari</option>
             <option value="Inuupahan">Inuupahan</option>
-            <option value="Iba Pa">Iba pa</option>
+            <option value="Iba_Pa">Iba pa</option>
           </select>
         </div>
       </div>
@@ -47,20 +48,20 @@
 
       <div class="column">
         <div class="select-box">
-          <select>
+          <select id="upahan">
             <option hidden>C. Lupang Sakahan/Pinagyayaman</option>
             <option value="Pag-aari">Pag-aari</option>
             <option value="Inuupahan">Inuupahan</option>
-            <option value="Iba Pa">Iba pa</option>
+            <option value="Iba_Pa">Iba pa</option>
           </select>
         </div>
         <div class="select-box">
-          <select>
+          <select id="basura">
             <option hidden>D. Paraan ng Pagtatapon ng Basura</option>
             <option value="Sinusunog">Sinusunog</option>
             <option value="Hukay na may takip">Hukay na may takip</option>
             <option value="Kinukulekta">Kinukulekta</option>
-            <option value="Iba Pa">Iba pa</option>
+            <option value="Iba_Pa">Iba pa</option>
           </select>
         </div>
       </div>
@@ -69,22 +70,22 @@
 
       <div class="column">
         <div class="select-box">
-          <select>
+          <select id="luto">
             <option hidden>E. Gamit na Enerhiya sa Pagluluto</option>
             <option value="Gas">Gas</option>
             <option value="Kahoy">Kahoy</option>
             <option value="Kuryente">Kuryente</option>
             <option value="LPG">LPG</option>
-            <option value="Iba Pa">Iba pa</option>
+            <option value="Iba_Pa">Iba pa</option>
           </select>
         </div>
         <div class="select-box">
-          <select>
+          <select id="tubig">
             <option hidden>F. Pinag kukunan ng Tubig</option>
             <option value="Poso Artesiano">Poso Artesiano</option>
             <option value="NAWASA">NAWASA</option>
             <option value="Balon">Balon</option>
-            <option value="Iba Pa">Iba pa</option>
+            <option value="Iba_Pa">Iba pa</option>
           </select>
         </div>
       </div>
@@ -93,24 +94,24 @@
 
       <div class="column">
         <div class="select-box">
-          <select>
+          <select id="dumi">
             <option hidden>G. Uri ng Palikuran</option>
             <option value="Flush">Flush</option>
             <option value="DeBuhos">De buhos</option>
             <option value="Hinukay">Hinukay</option>
-            <option value="Iba Pa">Iba pa</option>
+            <option value="Iba_Pa">Iba pa</option>
           </select>
         </div>
         <div class="select-box">
-          <select>
+          <select id="kuryente">
             <option hidden>H. Pinag mumulan ng Elektrisidad</option>
             <option value="Kuryente">Kuryente</option>
             <option value="Gaas">Gaas</option>
-            <option value="Iba Pa">Iba pa</option>
+            <option value="Iba_Pa">Iba pa</option>
           </select>
         </div>
         <div class="select-box">
-          <select>
+          <select id="sasakyan">
             <option hidden>I. Sasakyan</option>
             <option value="Kotse">Kotse</option>
             <option value="Jeep">Jeep</option>
@@ -125,22 +126,22 @@
 
       <div class="column">
         <div class="select-box">
-          <select>
+          <select id="agrikultura">
             <option hidden>J. Kasangkapang pang Agrikultura</option>
             <option value="Hand Tractor">Hand tractor</option>
             <option value="Kalabaw">Kalabaw</option>
             <option value="Traktora">Traktora</option>
-            <option value="Iba Pa">Iba pa</option>
+            <option value="Iba_Pa">Iba pa</option>
           </select>
         </div>
         <div class="select-box">
-          <select>
+          <select id="poultry">
             <option hidden>K. Pang Komersiyo</option>
             <option value="Babuyan">Babuyan</option>
             <option value="Manukan">Manukan</option>
             <option value="Itikan">Itikan</option>
             <option value="Bakahan">Bakahan</option>
-            <option value="Iba Pa">Iba pa</option>
+            <option value="Iba_Pa">Iba pa</option>
           </select>
         </div>
       </div>
@@ -150,72 +151,74 @@
       </div>
       <div class="column">
         <div class="checkbox">
-          <label><input type="checkbox" value="Radyo">Radyo</label>
+          <label><input type="checkbox" value="Radyo" name="radyo">Radyo</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" value="Telebisyon">Telebisyon</label>
+          <label><input type="checkbox" value="Telebisyon" name="telebisyon">Telebisyon</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" value="Gas Stove">Gas stove</label>
+          <label><input type="checkbox" value="Gas Stove" name="gas">Gas stove</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" value="Washing Machine">Washing Machine</label>
-        </div>
-      </div>
-
-      <div class="column">
-        <div class="checkbox">
-          <label><input type="checkbox" value="Aircon">Aircon</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="Computer">Computer</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="Ref Freezer">Ref/Freezer</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="Rice Cooker">Rice Cooker</label>
+          <label><input type="checkbox" value="Washing Machine" name="washingmachine">Washing Machine</label>
         </div>
       </div>
 
       <div class="column">
         <div class="checkbox">
-          <label><input type="checkbox" value="Plantsa">Plantsa</label>
+          <label><input type="checkbox" value="Aircon" name="aircon">Aircon</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" value="Microwave">Microwave</label>
+          <label><input type="checkbox" value="Computer" name="computer">Computer</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" value="Cellphone">Cellphone</label>
+          <label><input type="checkbox" value="Ref Freezer" name="ref">Ref/Freezer</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" value="Water Dispenser">Water Dispenser</label>
+          <label><input type="checkbox" value="Rice Cooker" name="ricecooker">Rice Cooker</label>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="checkbox">
+          <label><input type="checkbox" value="Plantsa" name="plantsa">Plantsa</label>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" value="Microwave" name="microwave">Microwave</label>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" value="Cellphone" name="cellphone">Cellphone</label>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" value="Water Dispenser" name="waterdispenser">Water Dispenser</label>
         </div>
       </div>
       <div class="column">
         <div class="checkbox">
-          <label><input type="checkbox" value="Karaoke">Karaoke</label>
+          <label><input type="checkbox" value="Karaoke" name="karaoke">Karaoke</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" value="CD/DVD">CD/DVD</label>
+          <label><input type="checkbox" value="CD/DVD" name="cd">CD/DVD</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" value="Electric Fan">Electric Fan</label>
+          <label><input type="checkbox" value="Electric Fan" name="electricfan">Electric Fan</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" value="Electric Stove">Electric Stove</label>
+          <label><input type="checkbox" value="Electric Stove" name="electricstove">Electric Stove</label>
         </div>
       </div>
       </div>
       <br>
 
       <div class="column">
-        <button type="button" onclick="prevPage()">Previous Page</button>
-        <button type="button" onclick="clearPage()">Clear Form</button>
-        <button type="submit" onclick="nextPage()">Next</button>
+        <input type="hidden" id="requiredForm" value="1" /> 
+        <button type="button"><a href="registration-form1.html">Previous Page</a></button>
+        <button type="button" class="clear">Clear Form</button>
+        <button type="submit" id="submit2">Next</button>
       </div>
     </form>
   </section>
+  <script src="form-global.js"></script>
 </body>
 
 <style>
@@ -385,6 +388,7 @@
   }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script type="text/javascript">
 
   // Import the Supabase client
@@ -415,22 +419,63 @@
   }
 
   // Call the checkConnection function
+  checkConnection();
 
-  async function nextPage() {
-    var res = document.getElementById("lupa");
-      var resSelectedIndex = res.selectedIndex;
-      var resOptions = res.options;
-      var resStatus = resOptions[resSelectedIndex].value;
+
+
+  document.querySelector('#submit2').onclick = function(e){
+    e.preventDefault();
+    nextPage1();
+
+  }
+
+  async function nextPage1() {
+
+    let lupa = $('#lupa').val();
+    let bahayz = $('#bahayz').val();
+    let upahan = $('#upahan').val();
+    let basura = $('#basura').val();
+    let luto = $('#luto').val();
+    let tubig = $('#tubig').val();
+    let dumi = $('#dumi').val();
+    let kuryente = $('#kuryente').val();
+    let sasakyan = $('#sasakyan').val();
+    let agrikultura = $('#agrikultura').val();
+    let poultry = $('#poultry').val();
+
+    var pangkabuhayan = new Array;
+
+    $('[type="checkbox"]:checked').each(function() {
+      pangkabuhayan.push($(this).val());
+    });
+
+    console.log(bahayz);
+
     
     const { data, error } = await database
       .from('pangkabuhayan')
       .insert([
         {
-          LupangKinatatayuan: resStatus,
+          LupangKinatatayuan: lupa,
+          BahaynaTinitirhan: bahayz,
+          
+          LupangSakahanPinagyayaman: upahan,
+          
+          ParaanPagtataponngBasura: basura,
+          GamitnaEnerhiyasaPagluluto: luto,
+          PinagkukunanngTubig: tubig,
+          UringPalikuran: dumi,
+          PinagmumulanngElektrisidad: kuryente,
+          KasangkapangpangAgrukultura: agrikultura,
+          PangKomersiyo: poultry,
+          
+          MgaKasangkapansaBahay: JSON.stringify(pangkabuhayan),
+          user_id: userData.id
         },
       ])
 
     alert("New User Created!");
+   
     window.location.href = 'registration-form3.html'
   }
 </script>
