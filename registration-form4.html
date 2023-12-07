@@ -210,19 +210,27 @@ body {
   let memberCount = 1;
 
   function generateFamilyMemberBlock() {
-        let famAddBlock = `<div class="input-box member family-member">
+        let famAddBlock = `
+        <div class="input-box member family-member">
             <label>Pangalan ${memberCount}</label>
             <div class="column">
-            <input type="text" placeholder="Member" name="member"/>
-            <input type="date" placeholder="Kapanganakan" name="kapanganakan"/>
-            </div>
-            <div class="column">
-              <input type="number" placeholder="Gulang sa buwan" name="gulang"/>
-              <input type="text" placeholder="Timbang " name="timbang" />
-              <input type="text" placeholder="Imunisasyon" name="imunisasyon" />
-              <input type="text" placeholder="Nasagawa"  name="nasagawa"/>
-            </div>
-          </div>`
+               
+               <input type="text" placeholder="Member 1" name="member"    />
+               <input type="date" placeholder="Kapanganakan"  name="kapanganakan"  />
+               </div>
+               <div class="column">
+                 <input type="number" placeholder="Edad" name="edad"   />
+                 <input type="text" placeholder="Kapansanan" name="kapansanan"  />
+                 <div class="select-box">
+                   <select name="kasarian">
+                     <option hidden>Kasarian</option>
+                     <option>Babae</option>
+                     <option>Lalaki</option>
+                     <option>Iba pa</option>
+                   </select>
+               </div> 
+          </div>
+          `
 
          memberCount++;
         return famAddBlock;}
@@ -249,9 +257,9 @@ $('.family-member').each(function() {
     let memberData = {
         "member": $(this).find('[name="member"]').val(),
         "kapanganakan": $(this).find('[name="kapanganakan"]').val(),
-        "gulang": $(this).find('[name="gulang"]').val(),
-        "timbang": $(this).find('[name="timbang"]').val(),
-        "imunisasyon": $(this).find('[name="imunisasyon"]').val(),
+        "edad": $(this).find('[name="edad"]').val(),
+        "kapansanan": $(this).find('[name="kapansanan"]').val(),
+        "kasarian": $(this).find('[name="kasarian"]').val(),
         "nasagawa": $(this).find('[name="nasagawa"]').val(),
     };
 
