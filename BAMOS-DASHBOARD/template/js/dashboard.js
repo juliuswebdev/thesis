@@ -688,8 +688,9 @@
       if(userDetails.role != 1) {
         window.location.href = '/get-started.html';
       }
-      $('#userAdmin').text(userDetails.username);
+      $('#userAdmin, .userAdmin').text(userDetails.username);
       $('#userAdminEmail').text(userDetails.email);
+      $('.userAddress').text(userDetails.sitio + ' ' + userDetails.purok);
 
     } else {
       window.location.href = '/get-started.html';

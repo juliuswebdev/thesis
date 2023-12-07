@@ -130,12 +130,12 @@
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="menu-icon mdi mdi-table"></i>
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">Users</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/bamos-table.html">See all tables</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/tables/bamos-users.html">See all users</a></li>
               </ul>
             </div>
           </li>
@@ -155,8 +155,7 @@
                   </ul>
                   <div>
                     <div class="btn-wrapper">
-                      <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print Report</a>
-                      <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
+                      <a href="gen-rep.html" class="btn btn-otline-dark"><i class="icon-printer"></i> Print Report</a>
                     </div>
                   </div>
                 </div>
@@ -177,7 +176,7 @@
                           </div> -->
                           <div>
                             <p class="statistics-title">New resident registration</p>
-                            <h3 class="rate-percentage">79</h3>
+                            <h3 class="rate-percentage"></h3>
                             <p class="text-danger d-flex"><span></span></p>
                           </div>
                         </div>
@@ -213,7 +212,7 @@
                               <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
-                                    <h4 class="card-title card-title-dash">Account Registration</h4>
+                                    <h4 class="card-title card-title-dash">Registration Notification</h4>
                                   </div>
                                 </div>
                                 <div class="table-responsive  mt-1">
@@ -245,7 +244,11 @@
                               <div class="card-body">
                                 <div class="row">
                                   <div class="col-lg-12">
-
+                                    <div class="d-sm-flex justify-content-between align-items-start">
+                                      <div>
+                                        <h4 class="card-title card-title-dash">Account Registration</h4>
+                                      </div>
+                                    </div>
                                     <div class="list-wrapper">
                                       <ul class="todo-list todo-list-rounded" id="registration-list">
                                         
@@ -401,14 +404,11 @@
 
     chart2(pieData);
 
-
     var { data, error } = await database.from('audit').select().eq('page', 'login').limit(10).order('created_at', {ascending: false});
     LoginStaffandUser(data);
     var { data, error } = await database.from('audit').select().eq('page', 'registration').limit(10).order('created_at', {ascending: false});
     RegisteredUser(data);
-    var { data, error } = await database.from('audit').select().limit(10).order('created_at', {ascending: false});
-    RegisteredUser(data);
-    var { data, error } = await database.from('testing').select().eq('role', 2).limit(10).order('created_at', {ascending: false});
+    var { data, error } = await database.from('testing').select(` *, miyembro ( kasarian, Employed )`).eq('role', 2).limit(10).order('created_at', {ascending: false});
     AccountRegistrationList(data);
   }
   getData();
@@ -634,6 +634,7 @@
     for(var x = 0; x < data.length; x++) {
         var user = data[x].firstname + ' ' + data[x].middlename + ' ' + data[x].lastname;
         var address = data[x].sitio  + ' ' + data[x].purok;
+        
         html += `
           <tr>
             <td>
@@ -645,7 +646,7 @@
               <p>${data[x].sitio}</p>
             </td>
             <td>
-              <p>18 members</p>
+              <p>1</p>
             </td>
             <td>
               <div class="badge badge-opacity-success">Active</div>

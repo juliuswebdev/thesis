@@ -236,7 +236,7 @@
         alert('Invalid user login.');
       }
     } else {
-      const { data, error } = await database.from('testing').select().eq('phoneNum', userPhoneNum).eq('password', userPassword);
+      const { data, error } = await database.from('testing').select().eq('phoneNum', userPhoneNum).eq('password', userPassword).eq('is_active', 1);
 
       if(data.length > 0) {
         const role = data[0].role;
