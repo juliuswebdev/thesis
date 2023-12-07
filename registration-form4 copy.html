@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>BAMOS REGISTRATION FORM</title>
+
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    
+    <!-- <link rel="stylesheet" href="/assets/css/style.css" /> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <section class="container">
+      <header>BAMOS FAMILY REGISTRATION FORM <br><h6>BARANGAY BAHAY PARE FAMILY PROFILE</h6> </header>
+      <form action="" class="form">
+        <div class="input-box">
+          <label>*KALUSUGANG PAMPAMILYA*</label>
+        </div>
+
+          <div class="input-box member">
+            <label>Kasama sa bahay na May Kapansanan</label>
+            <div><button type="button" id="addMember1" class="m-auto" style="width: 20%;">Add Family Member</button></div> <br>
+            <!-- <label>Pangalan 1</label>
+            <div class="column">
+            
+            <input type="text" placeholder="Member 1" id="member1"    />
+            <input type="date" placeholder="Kapanganakan"  id="kapanganakan1"  />
+            </div>
+            <div class="column">
+              <input type="number" placeholder="Edad" id="edad1"   />
+              <input type="text" placeholder="Kapansanan" id="kapansanan1"  />
+              <div class="select-box">
+                <select id="kasarian1">
+                  <option hidden>Kasarian</option>
+                  <option>Babae</option>
+                  <option>Lalaki</option>
+                  <option>Iba pa</option>
+                </select>
+            </div> -->
+            
+          </div>
+          <div class="memContainer1"></div>
+            <br>
+
+            <div class="input-box member">
+              <label>Kasama sa bahay na May Kapansanan</label>
+              <div><button type="button" id="addMember2" class="m-auto" style="width: 20%;">Add Family Member</button></div> <br>
+              <!-- <label>Pangalan 1</label>
+              <div class="column">
+               
+              <input type="text" placeholder="Member 1" id="member1"    />
+              <input type="date" placeholder="Kapanganakan"  id="kapanganakan1"  />
+              </div>
+              <div class="column">
+                <input type="number" placeholder="Edad" id="edad1"   />
+                <input type="text" placeholder="Kapansanan" id="kapansanan1"  />
+                <div class="select-box">
+                  <select id="kasarian1">
+                    <option hidden>Kasarian</option>
+                    <option>Babae</option>
+                    <option>Lalaki</option>
+                    <option>Iba pa</option>
+                  </select>
+  
+              </div> -->
+            </div>
+            <div class="memContainer2"></div>
+              <br>
+
+              <div class="input-box member">
+                <label>Kasama sa bahay na May Kapansanan</label>
+                <div><button type="button" id="addMember3" class="m-auto" style="width: 20%;">Add Family Member</button></div> <br>
+                <!-- <label>Pangalan 1</label>
+                <div class="column">
+                  
+                <input type="text" placeholder="Member 1" id="member1"    />
+                <input type="date" placeholder="Kapanganakan"  id="kapanganakan1"  />
+                </div>
+                <div class="column">
+                  <input type="number" placeholder="Edad" id="edad1"   />
+                  <input type="text" placeholder="Kapansanan" id="kapansanan1"  />
+                  <div class="select-box">
+                    <select id="kasarian1">
+                      <option hidden>Kasarian</option>
+                      <option>Babae</option>
+                      <option>Lalaki</option>
+                      <option>Iba pa</option>
+                    </select>
+    
+                </div> -->
+              </div>
+              <div class="memContainer3"></div>
+                <br>
+        
+            
+ 
+
+        <div class="column">
+          <button type="button"><a href="registration-form3.html">Previous Page</a></button>
+        <button class="clear">Clear Form</button>
+        <button type="submit" id="submit4">Next</button>
+        </div>
+      </form>
+    </section>
+    <script src="form-global.js"></script>
+  </body>
+
+<style>
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(to bottom, #b3b6b6, #A7D397 );
+}
+.container {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.container header {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #120d0d;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1.1rem;
+  color: #120d0d;
+  margin-top: 8px;
+  border: 2px solid #c3bfbf;
+  border-radius: 10px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 #120d0d;
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .gender-box {
+  margin-top: 20px;
+}
+.form ::placeholder{
+  font-size: 1.1rem;
+  color: #525252;
+}
+.form label{
+  font-size: 1.2rem;
+}
+.gender-box h3 {
+  color: #120d0d;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: #A7D397;
+}
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #120d0d;
+  font-size: 1.1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #555843;
+}
+.form button:hover {
+  background: #ff0c0c;
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script type="text/javascript">
+
+  // Import the Supabase client
+
+  // Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
+  const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
+
+  // Create a Supabase client
+  const database = supabase.createClient(supabaseUrl, supabaseKey);
+
+  // Function to check the connection status and show an alert
+  async function checkConnection() {
+    try {
+      // Try to make a request to Supabase to check the connection
+      const { data, error } = await database.from('kalusuganPWD').select();
+
+      // If there's an error, log it
+      if (error) {
+        console.error('Error connection! Please try again.', error.message);
+      } else {
+        // If successful, show an alert
+        alert('Connection secured!');
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  }
+
+  // Call the checkConnection function
+  checkConnection();
+
+
+addFam1();
+  let memberCount1 = 1;
+
+  function generateFamilyMemberBlock1() {
+        let famAddBlock1 = `<div class="input-box member">
+            <label>Pangalan ${memberCount1}</label>
+            <div class="column">
+            <input type="text" placeholder="Member ${memberCount1}" name="member1"/>
+            <input type="date" placeholder="Kapanganakan" name="kapanganakan"/>
+            </div>
+            <div class="column">
+              <input type="number" placeholder="Gulang sa buwan" name="gulang1"/>
+              <input type="text" placeholder="Timbang " name="timbang1" />
+              <input type="text" placeholder="Imunisasyon" name="imunisasyon1" />
+              <input type="text" placeholder="Nasagawa"  name="nasagawa1"/>
+            </div>
+          </div>`
+
+         memberCount1++;
+        return famAddBlock1;}
+
+function addFam1(){
+  $( "#addMember1" ).on( "click", function() {
+    let familyMemberBlock1 = generateFamilyMemberBlock1();
+    $('.memContainer1').append(familyMemberBlock1);
+} );
+}
+
+addFam2();
+  let memberCount2 = 1;
+
+  function generateFamilyMemberBlock2() {
+        let famAddBlock2 = `<div class="input-box member">
+            <label>Pangalan ${memberCount2}</label>
+            <div class="column">
+            <input type="text" placeholder="Member ${memberCount2}" id="membe${memberCount2}"/>
+            <input type="date" placeholder="Kapanganakan" id="kapanganaka${memberCount2}"/>
+            </div>
+            <div class="column">
+              <input type="number" placeholder="Gulang sa buwan" id="gulan${memberCount2}"/>
+              <input type="text" placeholder="Timbang " id="timban${memberCount2}" />
+              <input type="text" placeholder="Imunisasyon" id="imunisasyo${memberCount2}" />
+              <input type="text" placeholder="Nasagawa"  id="nasagaw${memberCount2}"/>
+            </div>
+          </div>`
+
+         memberCount2++;
+        return famAddBlock2;}
+
+function addFam2(){
+  $( "#addMember2" ).on( "click", function() {
+    let familyMemberBlock2 = generateFamilyMemberBlock2();
+    $('.memContainer2').append(familyMemberBlock2);
+} );
+}
+
+addFam3();
+  let memberCount3 = 1;
+
+  function generateFamilyMemberBlock3() {
+        let famAddBlock3 = `<div class="input-box member">
+            <label>Pangalan ${memberCount3}</label>
+            <div class="column">
+            <input type="text" placeholder="Member ${memberCount3}" id="membe${memberCount3}"/>
+            <input type="date" placeholder="Kapanganakan" id="kapanganaka${memberCount3}"/>
+            </div>
+            <div class="column">
+              <input type="number" placeholder="Gulang sa buwan" id="gulan${memberCount3}"/>
+              <input type="text" placeholder="Timbang " id="timban${memberCount3}" />
+              <input type="text" placeholder="Imunisasyon" id="imunisasyo${memberCount3}" />
+              <input type="text" placeholder="Nasagawa"  id="nasagaw${memberCount3}"/>
+            </div>
+          </div>`
+
+         memberCount3++;
+        return famAddBlock3;}
+
+function addFam3(){
+  $( "#addMember3" ).on( "click", function() {
+    let familyMemberBlock3 = generateFamilyMemberBlock3();
+    $('.memContainer3').append(familyMemberBlock3);
+} );
+}
+
+  document.querySelector('#submit4').onclick = function(e){
+    e.preventDefault();
+    nextPage3();
+
+  }
+
+  async function nextPage3() {
+
+    
+  //Family Array 1
+
+  // $('#member1').val();
+  //   $('#kapanganakan1').val();
+  //   $('#edad1').val();
+  //   $('#kapansanan1').val();
+  //   $('#kasarian1').val();
+
+  // //Family Array 2
+
+  // $('#member2').val();
+  //   $('#kapanganakan2').val();
+  //   $('#edad2').val();
+  //   $('#kapansanan2').val();
+  //   $('#kasarian2').val();
+
+  //   //Family Array 2
+    
+  // $('#member3').val();
+  //   $('#kapanganakan3').val();
+  //   $('#edad3').val();
+  //   $('#kapansanan3').val();
+  //   $('#kasarian3').val();
+
+
+  //   let familymem1 = new Array;
+  //   familymem1.push({
+  //   "member1" :  $('#member1').val(),
+  //   "kapanganakan1": $('#kapanganakan1').val(),
+  //   "edad1":  $('#edad1').val(),
+  //   "kapansanan1":  $('#kapansanan1').val(),
+  //   "kasarian1":  $('#kasarian1').val()
+  //   });
+
+  //   let familymem2 = new Array;
+  //   familymem2.push({
+  //   "member2" :  $('#member2').val(),
+  //   "kapanganakan2": $('#kapanganakan2').val(),
+  //   "edad2":  $('#edad2').val(),
+  //   "kapansanan2":  $('#kapansanan2').val(),
+  //   "kasarian2":  $('#kasarian2').val()
+  // });
+
+  // let familymem3 = new Array;
+  // familymem3.push({
+  //   "member3" :  $('#member3').val(),
+  //   "kapanganakan3": $('#kapanganakan3').val(),
+  //   "edad3":  $('#edad3').val(),
+  //   "kapansanan3":  $('#kapansanan3').val(),
+  //   "kasarian3":  $('#kasarian3').val()
+
+
+
+  // });
+
+  let familyMembers1 = [];
+
+$('.family-member').each(function() {
+    let memberData1 = {
+        "member": $(this).find('[name="member1"]').val(),
+        "kapanganakan": $(this).find('[name="kapanganakan1"]').val(),
+        "gulang": $(this).find('[name="gulang1"]').val(),
+        "timbang": $(this).find('[name="timbang1"]').val(),
+        "imunisasyon": $(this).find('[name="imunisasyon1"]').val(),
+        "nasagawa": $(this).find('[name="nasagawa1"]').val(),
+    };
+
+    familyMembers1.push(memberData1);
+});
+
+console.log(familyMembers1);
+
+
+
+
+    
+    const { data, error } = await database
+      .from('kalusuganPWD')
+      .insert([
+        {
+          Family_mem_1: familymem1,
+          Family_mem_2: familymem2,
+          Family_mem_3: familymem3,
+          user_id: userId
+        },
+      ])
+
+    alert("New User Created!");
+    window.location.href = 'registration-form5.html'
+  }
+</script>
+</html>
