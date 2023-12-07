@@ -22,7 +22,10 @@
 
           <div class="input-box member">
             <label>Kasama sa bahay na May Kapansanan</label>
+            <div><button type="button" id="addMember1" class="m-auto" style="width: 20%;">Add Family Member</button></div> <br>
+            <label>Pangalan 1</label>
             <div class="column">
+            
             <input type="text" placeholder="Member 1" id="member1"    />
             <input type="date" placeholder="Kapanganakan"  id="kapanganakan1"  />
             </div>
@@ -36,22 +39,26 @@
                   <option>Lalaki</option>
                   <option>Iba pa</option>
                 </select>
-
             </div>
+            
           </div>
+          <div class="memContainer1"></div>
             <br>
 
             <div class="input-box member">
               <label>Kasama sa bahay na May Kapansanan</label>
+              <div><button type="button" id="addMember2" class="m-auto" style="width: 20%;">Add Family Member</button></div> <br>
+              <label>Pangalan 1</label>
               <div class="column">
-              <input type="text" placeholder="Member 2" id="member2"    />
-              <input type="date" placeholder="Kapanganakan"  id="kapanganakan2"  />
+               
+              <input type="text" placeholder="Member 1" id="member1"    />
+              <input type="date" placeholder="Kapanganakan"  id="kapanganakan1"  />
               </div>
               <div class="column">
-                <input type="number" placeholder="Edad" id="edad2"   />
-                <input type="text" placeholder="Kapansanan" id="kapansanan2"  />
+                <input type="number" placeholder="Edad" id="edad1"   />
+                <input type="text" placeholder="Kapansanan" id="kapansanan1"  />
                 <div class="select-box">
-                  <select id="kasarian2">
+                  <select id="kasarian1">
                     <option hidden>Kasarian</option>
                     <option>Babae</option>
                     <option>Lalaki</option>
@@ -60,19 +67,23 @@
   
               </div>
             </div>
+            <div class="memContainer2"></div>
               <br>
 
               <div class="input-box member">
                 <label>Kasama sa bahay na May Kapansanan</label>
+                <div><button type="button" id="addMember3" class="m-auto" style="width: 20%;">Add Family Member</button></div> <br>
+                <label>Pangalan 1</label>
                 <div class="column">
-                <input type="text" placeholder="Member 3" id="member3"    />
-                <input type="date" placeholder="Kapanganakan"  id="kapanganakan3"  />
+                  
+                <input type="text" placeholder="Member 1" id="member1"    />
+                <input type="date" placeholder="Kapanganakan"  id="kapanganakan1"  />
                 </div>
                 <div class="column">
-                  <input type="number" placeholder="Edad" id="edad3"   />
-                  <input type="text" placeholder="Kapansanan" id="kapansanan3"  />
+                  <input type="number" placeholder="Edad" id="edad1"   />
+                  <input type="text" placeholder="Kapansanan" id="kapansanan1"  />
                   <div class="select-box">
-                    <select id="kasarian3">
+                    <select id="kasarian1">
                       <option hidden>Kasarian</option>
                       <option>Babae</option>
                       <option>Lalaki</option>
@@ -81,6 +92,7 @@
     
                 </div>
               </div>
+              <div class="memContainer3"></div>
                 <br>
         
             
@@ -263,6 +275,89 @@ body {
   checkConnection();
 
 
+addFam1();
+  let memberCount1 = 2;
+
+  function generateFamilyMemberBlock1() {
+        let famAddBlock1 = `<div class="input-box member">
+            <label>Pangalan ${memberCount1}</label>
+            <div class="column">
+            <input type="text" placeholder="Member ${memberCount1}" name="member"/>
+            <input type="date" placeholder="Kapanganakan" name="kapanganakan"/>
+            </div>
+            <div class="column">
+              <input type="number" placeholder="Gulang sa buwan" name="gulang"/>
+              <input type="text" placeholder="Timbang " name="timbang" />
+              <input type="text" placeholder="Imunisasyon" name="imunisasyon" />
+              <input type="text" placeholder="Nasagawa"  name="nasagawa"/>
+            </div>
+          </div>`
+
+         memberCount1++;
+        return famAddBlock1;}
+
+function addFam1(){
+  $( "#addMember1" ).on( "click", function() {
+    let familyMemberBlock1 = generateFamilyMemberBlock1();
+    $('.memContainer1').append(familyMemberBlock1);
+} );
+}
+
+addFam2();
+  let memberCount2 = 2;
+
+  function generateFamilyMemberBlock2() {
+        let famAddBlock2 = `<div class="input-box member">
+            <label>Pangalan ${memberCount2}</label>
+            <div class="column">
+            <input type="text" placeholder="Member ${memberCount2}" id="membe${memberCount2}"/>
+            <input type="date" placeholder="Kapanganakan" id="kapanganaka${memberCount2}"/>
+            </div>
+            <div class="column">
+              <input type="number" placeholder="Gulang sa buwan" id="gulan${memberCount2}"/>
+              <input type="text" placeholder="Timbang " id="timban${memberCount2}" />
+              <input type="text" placeholder="Imunisasyon" id="imunisasyo${memberCount2}" />
+              <input type="text" placeholder="Nasagawa"  id="nasagaw${memberCount2}"/>
+            </div>
+          </div>`
+
+         memberCount2++;
+        return famAddBlock2;}
+
+function addFam2(){
+  $( "#addMember2" ).on( "click", function() {
+    let familyMemberBlock2 = generateFamilyMemberBlock2();
+    $('.memContainer2').append(familyMemberBlock2);
+} );
+}
+
+addFam3();
+  let memberCount3 = 2;
+
+  function generateFamilyMemberBlock3() {
+        let famAddBlock3 = `<div class="input-box member">
+            <label>Pangalan ${memberCount3}</label>
+            <div class="column">
+            <input type="text" placeholder="Member ${memberCount3}" id="membe${memberCount3}"/>
+            <input type="date" placeholder="Kapanganakan" id="kapanganaka${memberCount3}"/>
+            </div>
+            <div class="column">
+              <input type="number" placeholder="Gulang sa buwan" id="gulan${memberCount3}"/>
+              <input type="text" placeholder="Timbang " id="timban${memberCount3}" />
+              <input type="text" placeholder="Imunisasyon" id="imunisasyo${memberCount3}" />
+              <input type="text" placeholder="Nasagawa"  id="nasagaw${memberCount3}"/>
+            </div>
+          </div>`
+
+         memberCount3++;
+        return famAddBlock3;}
+
+function addFam3(){
+  $( "#addMember3" ).on( "click", function() {
+    let familyMemberBlock3 = generateFamilyMemberBlock3();
+    $('.memContainer3').append(familyMemberBlock3);
+} );
+}
 
   document.querySelector('#submit4').onclick = function(e){
     e.preventDefault();

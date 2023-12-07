@@ -442,84 +442,79 @@
 
   addFam();
 
-  let memberCount = 1;
+  let memberCount = 2;
 
   function generateFamilyMemberBlock() {
         let famAddBlock = `
-      
-        <!-- Container -->
-      
-        <div class="input-box member family-member ">   
-
-                                              <label>Family member </label>
-                                              <input type="text" placeholder="Member" name="member" />
-                            <div class="column">
-                                              <input type="date" placeholder="Date of birth" name="bday" />
-                                              <input type="number" placeholder="Age" name="age" />
-                                              <select name="relation" class="select-box">
-                                                <option hidden>Member Relation</option>
-                                                <option value="GrandMother">GrandMother</option>
-                                                <option value="GrandFather">GrandFather</option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Father">Father</option>
-                                                <option value="Husband">Husband</option>
-                                                <option value="Wife">Wife</option>
-                                                <option value="Son">Son</option>
-                                                <option value="Daughter">Daughter</option>
-                                                <option value="Uncle">Uncle</option>
-                                                <option value="Auntie">Auntie</option>
-                                                <option value="Nephew">Nephew</option>
-                                                <option value="Niece">Niece</option>
-                                                <option value="Grandchild">Grandchild</option>
-                                                <option value="Cousin">Cousin</option>
-                                              </select>
-                                        <div class="select-box">
-                                                      <select name="civilStat">
-                                                        <option hidden>Civil Status</option>
-                                                        <option value="Single">Single</option>
-                                                        <option value="Married">Married</option>
-                                                        <option value="Widowed">Widowed</option>
-                                                      </select>
-                                        </div>
-                         </div>
+        <div class="input-box member">
+        <label>Family member ${memberCount}</label>
+        <input type="text" placeholder="Member" name="member${memberCount}" />
+        <div class="column">
+          <input type="date" placeholder="Date of birth" name="bday${memberCount}" />
+          <input type="number" placeholder="Age" name="age${memberCount}" />
+          <select name="relation${memberCount}" class="select-box">
+            <option hidden>Member Relation</option>
+            <option value="GrandMother">GrandMother</option>
+            <option value="GrandFather">GrandFather</option>
+            <option value="Mother">Mother</option>
+            <option value="Father">Father</option>
+            <option value="Husband">Husband</option>
+            <option value="Wife">Wife</option>
+            <option value="Son">Son</option>
+            <option value="Daughter">Daughter</option>
+            <option value="Uncle">Uncle</option>
+            <option value="Auntie">Auntie</option>
+            <option value="Nephew">Nephew</option>
+            <option value="Niece">Niece</option>
+            <option value="Grandchild">Grandchild</option>
+            <option value="Cousin">Cousin</option>
+          </select>
+          <div class="select-box">
+            <select name="civilStat${memberCount}">
+              <option hidden>Civil Status</option>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+              <option value="Widowed">Widowed</option>
+            </select>
+          </div>
+        </div>
         
-                      <div class="column">
-                            <input type="text" placeholder="Religion" name="religion" />
-                            <select name="edAttain" class="select-box">
-                              <option hidden>Educational Attainment</option>
-                              <option value="Elementary">Elementary</option>
-                              <option value="JuniorHigh">JuniorHigh</option>
-                              <option value="SeniorHigh">SeniorHigh</option>
-                              <option value="College">College</option>
-                            </select>
-                            <input type="text" placeholder="Source of income/Work" name="sourceIncome" />
-                            <div class="select-box">
-                              <select name="genderPick">
-                                <option hidden>Gender</option>
-                                <option value="Female">Female</option>
-                                <option value="Male">Male</option>
-                                <option value="Prefer_not_to_say">Prefer not to say</option>
-                              </select>
-                            </div>
-                      </div>
-                      
-                      <div class="column">
-                              <input type="number" placeholder="Years of staying in the area" name="stay" />
-                              <input type="text" placeholder="Philhealth(optional)" name="philId" />
-                            <div class="select-box">
-                              <select name="incomePick">
-                                <option hidden>Monthly income</option>
-                                <option value="5k-10k">5k-10k</option>
-                                <option value="15k-25k">15k-25k</option>
-                                <option value="30k+">30k+</option>
-                              </select>
-                            </div>
-                          <div class="checkbox">
-                            <label><input type="checkbox" value="isEmployee" name="isEmployee"> Employed</label>
-                          </div>
-               </div> 
-       
-            `;
+        <div class="column">
+          <input type="text" placeholder="Religion" name="religion${memberCount}" />
+          <select name="edAttain${memberCount}" class="select-box">
+            <option hidden>Educational Attainment</option>
+            <option value="Elementary">Elementary</option>
+            <option value="JuniorHigh">JuniorHigh</option>
+            <option value="SeniorHigh">SeniorHigh</option>
+            <option value="College">College</option>
+          </select>
+          <input type="text" placeholder="Source of income/Work" name="sourceIncome${memberCount}" />
+          <div class="select-box">
+            <select name="genderPick${memberCount}">
+              <option hidden>Gender</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Prefer_not_to_say">Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+        <div class="column">
+          <input type="number" placeholder="Years of staying in the area" name="stay${memberCount}" />
+          <input type="text" placeholder="Philhealth(optional)" name="philId${memberCount}" />
+          <div class="select-box">
+            <select name="incomePick${memberCount}">
+              <option hidden>Monthly income</option>
+              <option value="5k-10k">5k-10k</option>
+              <option value="15k-25k">15k-25k</option>
+              <option value="30k+">30k+</option>
+            </select>
+            
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="isEmployee" name="isEmployee${memberCount}"> Employed</label>
+          </div>
+        </div> 
+        `;
         memberCount++;
         return famAddBlock;}
 
@@ -602,61 +597,100 @@ function addFam(){
 
     //Family Array 1
 
-    $('[name="member"]').val();
-    $('[name="bday"]').val();
-    $('[name="age"]').val();
-    $('[name="relation"]').val();
-    $('[name="civilStat"]').val();
-    $('[name="religion"]').val();
-    $('[name="sourceIncome"]').val();
-    $('[name="genderPick"]').val();
-    $('[name="stay"]').val();
-    $('[name="philId"]').val();
-    $('[name="edAttain"]').val();
-    $('[name="incomePick"]').val(),
-    $('[name="isEmployee"]:checked').val();
+    $('#member1').val();
+    $('#bday').val();
+    $('#age').val();
+    $('#relation').val();
+    $('#civilStat').val();
+    $('#religion').val();
+    $('#edAttain').val();
+    $('#sourceIncome').val();
+    $('#genderPick').val();
+    $('#stay').val();
+    $('#philId').val();
+    $('#incomePick').val();
+    $('[name="isEmployee2"]:checked').val();
     
 
-    // let family1 = new Array;
-    let family1 = [];
+    let family1 = new Array;
+    family1.push({
+    "member" :  $('#member1').val(),
+    "bday": $('#bday').val(),
+    "age":  $('#age').val(),
+    "relation": $('#relation').val(),
+    "civilStat": $('#civilStat').val(),
+    "edAttain": $('#edAttain').val(),
+    "sourceIncome": $('#sourceIncome').val(),
+    "genderPick":$('#genderPick').val(),
+    "stay": $('#stay').val(),
+    "philId": $('#philId').val(),
+    "incomePick":$('#incomePick').val(),
+    "employee": $('[name="isEmployee2"]:checked').val()
+    });
 
-    $('.family-member').each(function() {
-    let memberData = {
-        "member": $(this).find('[name="member"]').val(),
-        "bday": $(this).find('[name="bday"]').val(),
-        "age": $(this).find('[name="age"]').val(),
-        "relation": $(this).find('#relation').val(),
-        "civilStat": $(this).find('[name="relation"]').val(),
-        "edAttain": $(this).find('[name="civilStat"]').val(),
-        "sourceIncome": $(this).find('[name="sourceIncome"]').val(),
-        "genderPick": $(this).find('[name="genderPick"]').val(),
-        "stay": $(this).find('[name="stay"]').val(),
-        "philId": $(this).find('[name="philId"]').val(),
-        "incomePick": $(this).find('[name="incomePick"]').val(),
-        "employee": $(this).find('[name="isEmployee"]:checked').val(),
-    };
+    //Family Array 2
 
-    family1.push(memberData);
-    console.log(family1);
-    
-});
+    $('#member2').val();
+    $('#bday2').val();
+    $('#age2').val();
+    $('#relation2').val();
+    $('#civilStat2').val();
+    $('#religion2').val();
+    $('#edAttain2').val();
+    $('#sourceIncome2').val();
+    $('#genderPick2').val();
+    $('#stay2').val();
+    $('#philId2').val();
+    $('#incomePick2').val();
+    $('[name="isEmployee3"]:checked').val();
 
-    // family1.push({
-    // "member" :   $('[name="member"]').val(),
-    // "bday":     $('[name="bday"]').val(),
-    // "age":   $('[name="age"]').val(),
-    // "relation": $('#relation').val(),
-    // "civilStat":    $('[name="relation"]').val(),
-    // "edAttain":  $('[name="civilStat"]').val(),
-    // "sourceIncome":    $('[name="sourceIncome"]').val(),
-    // "genderPick":$('[name="genderPick"]').val(),
-    // "stay":  $('[name="stay"]').val(),
-    // "philId":   $('[name="philId"]').val(),
-    // "incomePick": $('[name="incomePick"]').val(),
-    // "employee": $('[name="isEmployee"]:checked').val(),
-    // });
+    let family2 = new Array;
+    family2.push({
+    "member" :  $('#member2').val(),
+    "bday": $('#bday2').val(),
+    "age":  $('#age2').val(),
+    "relation": $('#relation2').val(),
+    "civilStat": $('#civilStat2').val(),
+    "edAttain": $('#edAttain2').val(),
+    "sourceIncome": $('#sourceIncome2').val(),
+    "genderPick":$('#genderPick2').val(),
+    "stay": $('#stay2').val(),
+    "philId": $('#philId2').val(),
+    "incomePick":$('#incomePick2').val(),
+    "employee": $('[name="isEmployee3"]:checked').val()
+  });
 
+   //Family Array 2
 
+   $('#member3').val();
+    $('#bday3').val();
+    $('#age3').val();
+    $('#relation3').val();
+    $('#civilStat3').val();
+    $('#religion3').val();
+    $('#edAttain3').val();
+    $('#sourceIncome3').val();
+    $('#genderPick3').val();
+    $('#stay3').val();
+    $('#philId3').val();
+    $('#incomePick3').val();
+    $('[name="isEmployee4"]:checked').val();
+
+    let family3 = new Array;
+    family3.push({
+    "member" :  $('#member3').val(),
+    "bday": $('#bday3').val(),
+    "age":  $('#age3').val(),
+    "relation": $('#relation3').val(),
+    "civilStat": $('#civilStat2').val(),
+    "edAttain": $('#edAttain2').val(),
+    "sourceIncome": $('#sourceIncome2').val(),
+    "genderPick":$('#genderPick2').val(),
+    "stay": $('#stay2').val(),
+    "philId": $('#philId2').val(),
+    "incomePick":$('#incomePick2').val(),
+    "employee": $('[name="isEmployee4"]:checked').val()
+  });
 
     const { data, error } = await database
       .from('miyembro')
@@ -668,7 +702,9 @@ function addFam(){
           bahayNumero: repHouse,
           isinilang: repBD,
           kasarian: gen,
-          Family_members: family1,
+          Family_member_1:  family1,
+          Family_member_2:  family2,
+          Family_member_3:  family3,
           user_id: userId,
           Sitio: sitio,
           Purok: purok,

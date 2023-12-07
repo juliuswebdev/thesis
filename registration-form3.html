@@ -21,117 +21,31 @@
           <label>*NUTRISYON: Mga Batang May Edad na 0-6 Taong Gulang*</label>
         </div>
 
-          <div class="input-box member">
-            <label>Pangalan</label>
-            <div class="column">
-            <input type="text" placeholder="Member 1" id="member1"/>
-            <input type="date" placeholder="Kapanganakan" id="kapanganakan1"/>
-            </div>
-            <div class="column">
-              <input type="number" placeholder="Gulang sa buwan" id="gulang1"/>
-              <input type="text" placeholder="Timbang " id="timbang1" />
-              <input type="text" placeholder="Imunisasyon" id="imunisasyon1" />
-              <input type="text" placeholder="Nasagawa"  id="nasagawa1"/>
-            </div>
+       
+       
+        <button type="button" id="addMember" class="m-auto" style="width: 20%;">Add Family Member</button>
+        <!-- <div class="input-box member">
+          <label>Pangalan 1</label>
+          <div class="column">
+          <input type="text" placeholder="Member 1" id="member1"/>
+          <input type="date" placeholder="Kapanganakan" id="kapanganakan1"/>
           </div>
-            <br>
+          <div class="column">
+            <input type="number" placeholder="Gulang sa buwan" id="gulang1"/>
+            <input type="text" placeholder="Timbang " id="timbang1" />
+            <input type="text" placeholder="Imunisasyon" id="imunisasyon1" />
+            <input type="text" placeholder="Nasagawa"  id="nasagawa1"/>
+          </div>
+        </div> -->
+        <div class="memContainer"></div>
         
-            <div class="input-box member">
-              <label>Pangalan</label>
-              <div class="column">
-              <input type="text" placeholder="Member 2" id="member2"/>
-              <input type="date" placeholder="Kapanganakan" id="kapanganakan2"/>
-              </div>
-              <div class="column">
-                <input type="number" placeholder="Gulang sa buwan" id="gulang2"/>
-                <input type="text" placeholder="Timbang " id="timbang2" />
-                <input type="text" placeholder="Imunisasyon" id="imunisasyon2" />
-                <input type="text" placeholder="Nasagawa"  id="nasagawa2"/>
-              </div>
-            </div>
-              <br>
-
-              <div class="input-box member">
-                <label>Pangalan</label>
-                <div class="column">
-                <input type="text" placeholder="Member 3" id="member3"/>
-                <input type="date" placeholder="Kapanganakan" id="kapanganakan3"/>
-                </div>
-                <div class="column">
-                  <input type="number" placeholder="Gulang sa buwan" id="gulang3"/>
-                  <input type="text" placeholder="Timbang " id="timbang3" />
-                  <input type="text" placeholder="Imunisasyon" id="imunisasyon3" />
-                  <input type="text" placeholder="Nasagawa"  id="nasagawa3"/>
-                </div>
-              </div>
-                <br>
-
-                <div class="input-box member">
-                  <label>Pangalan</label>
-                  <div class="column">
-                  <input type="text" placeholder="Member 4" id="member4"/>
-                  <input type="date" placeholder="Kapanganakan" id="kapanganakan4"/>
-                  </div>
-                  <div class="column">
-                    <input type="number" placeholder="Gulang sa buwan" id="gulang4"/>
-                    <input type="text" placeholder="Timbang " id="timbang4" />
-                    <input type="text" placeholder="Imunisasyon" id="imunisasyon4" />
-                    <input type="text" placeholder="Nasagawa"  id="nasagawa4"/>
-                  </div>
-                </div>
-                  <br>
-
-                  <div class="input-box member">
-                    <label>Pangalan</label>
-                    <div class="column">
-                    <input type="text" placeholder="Member 5" id="member5"/>
-                    <input type="date" placeholder="Kapanganakan" id="kapanganakan5"/>
-                    </div>
-                    <div class="column">
-                      <input type="number" placeholder="Gulang sa buwan" id="gulang5"/>
-                      <input type="text" placeholder="Timbang " id="timbang5" />
-                      <input type="text" placeholder="Imunisasyon" id="imunisasyon5" />
-                      <input type="text" placeholder="Nasagawa"  id="nasagawa5"/>
-                    </div>
-                  </div>
-                    <br>
-
-                    <div class="input-box member">
-                      <label>Pangalan</label>
-                      <div class="column">
-                      <input type="text" placeholder="Member 6" id="member6"/>
-                      <input type="date" placeholder="Kapanganakan" id="kapanganakan6"/>
-                      </div>
-                      <div class="column">
-                        <input type="number" placeholder="Gulang sa buwan" id="gulang6"/>
-                        <input type="text" placeholder="Timbang " id="timbang6" />
-                        <input type="text" placeholder="Imunisasyon" id="imunisasyon6" />
-                        <input type="text" placeholder="Nasagawa"  id="nasagawa6"/>
-                      </div>
-                    </div>
-                      <br>
-
-                      <div class="input-box member">
-                        <label>Pangalan</label>
-                        <div class="column">
-                        <input type="text" placeholder="Member 7" id="member7"/>
-                        <input type="date" placeholder="Kapanganakan" id="kapanganakan7"/>
-                        </div>
-                        <div class="column">
-                          <input type="number" placeholder="Gulang sa buwan" id="gulang7"/>
-                          <input type="text" placeholder="Timbang " id="timbang7" />
-                          <input type="text" placeholder="Imunisasyon" id="imunisasyon7" />
-                          <input type="text" placeholder="Nasagawa"  id="nasagawa7"/>
-                        </div>
-                      </div>
-                        <br>
- 
-
         <div class="column">
           <button type="button"><a href="registration-form2.html">Previous Page</a></button>
         <button class="clear">Clear Form</button>
         <button type="submit" id="submit3">Next</button>
         </div>
+
+       
       </form>
     </section>
     <script src="form-global.js"></script>
@@ -304,6 +218,35 @@ body {
   checkConnection();
 
 
+  addFam();
+  let memberCount = 1;
+
+  function generateFamilyMemberBlock() {
+        let famAddBlock = `<div class="input-box member family-member">
+            <label>Pangalan ${memberCount}</label>
+            <div class="column">
+            <input type="text" placeholder="Member" name="member"/>
+            <input type="date" placeholder="Kapanganakan" name="kapanganakan"/>
+            </div>
+            <div class="column">
+              <input type="number" placeholder="Gulang sa buwan" name="gulang"/>
+              <input type="text" placeholder="Timbang " name="timbang" />
+              <input type="text" placeholder="Imunisasyon" name="imunisasyon" />
+              <input type="text" placeholder="Nasagawa"  name="nasagawa"/>
+            </div>
+          </div>`
+
+         memberCount++;
+        return famAddBlock;}
+
+function addFam(){
+  $( "#addMember" ).on( "click", function() {
+    let familyMemberBlock = generateFamilyMemberBlock();
+    $('.memContainer').append(familyMemberBlock);
+} );
+}
+
+
 
   document.querySelector('#submit3').onclick = function(e){
     e.preventDefault();
@@ -313,33 +256,52 @@ body {
 
   async function nextPage2() {
 
-    let  member = new Array();
+    let familyMembers = [];
+
+$('.family-member').each(function() {
+    let memberData = {
+        "member": $(this).find('[name="member"]').val(),
+        "kapanganakan": $(this).find('[name="kapanganakan"]').val(),
+        "gulang": $(this).find('[name="gulang"]').val(),
+        "timbang": $(this).find('[name="timbang"]').val(),
+        "imunisasyon": $(this).find('[name="imunisasyon"]').val(),
+        "nasagawa": $(this).find('[name="nasagawa"]').val(),
+    };
+
+    familyMembers.push(memberData);
+});
+
+console.log(familyMembers);
+
+    // let  member = new Array();
     
 
-    for ($i=0; $i <= 6; $i++) {
+    // for ($i=0; $i <= 6; $i++) {
 
-      member.push({
-        name: $(`#member${$i+1}`).val(),
-        bday: $(`#kapanganakan${$i+1}`).val(),
-        age: $(`#gulang${$i+1}`).val(),
-        weight: $(`#timbang${$i+1}`).val(),
-        imunization: $(`#imunisasyon${$i+1}`).val(),
-        nagsagawa: $(`#nasagawa${$i+1}`).val()
-      });
-    }
+    //   member.push({
+    //     name: $(`#member${$i+1}`).val(),
+    //     bday: $(`#kapanganakan${$i+1}`).val(),
+    //     age: $(`#gulang${$i+1}`).val(),
+    //     weight: $(`#timbang${$i+1}`).val(),
+    //     imunization: $(`#imunisasyon${$i+1}`).val(),
+    //     nagsagawa: $(`#nasagawa${$i+1}`).val()
+    //   });
+    // }
 
 
     const { data, error } = await database
       .from('nutrisyon')
       .insert([
         {
-            member_1: member[0],
-            member_2: member[1],
-            member_3: member[2],
-            member_4: member[3],
-            member_5: member[4],
-            member_6: member[5],
-            member_7: member[6],
+            // member_1: member[0],
+            // member_2: member[1],
+            // member_3: member[2],
+            // member_4: member[3],
+            // member_5: member[4],
+            // member_6: member[5],
+            // member_7: member[6],
+            Family_members: familyMembers,
+
             user_id: userData.id
         },
       ])
