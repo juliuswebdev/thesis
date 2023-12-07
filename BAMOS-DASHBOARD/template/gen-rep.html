@@ -68,45 +68,13 @@
                         <div class="line-items">
                             <div class="headers clearfix">
                             <div class="row">
-                                <div class="col-xs-4">Description</div>
+                                <div class="col-xs-4">Purok</div>
                                 <div class="col-xs-3">Information</div>
                                 <div class="col-xs-5 text-right">Total number of residents</div>
                             </div>
                             </div>
-                            <div class="items">
-                            <div class="row item">
-                                <div class="col-xs-4 desc">
-                                    -----
-                                </div>
-                                <div class="col-xs-3 qty">
-                                    -----
-                                </div>
-                                <div class="col-xs-5 amount text-right">
-                                    -----
-                                </div>
-                            </div>
-                            <div class="row item">
-                                <div class="col-xs-4 desc">
-                                    -----
-                                </div>
-                                <div class="col-xs-3 qty">
-                                    -----
-                                </div>
-                                <div class="col-xs-5 amount text-right">
-                                    -----
-                                </div>
-                            </div>
-                            <div class="row item">
-                                <div class="col-xs-4 desc">
-                                    -----
-                                </div>
-                                <div class="col-xs-3 qty">
-                                    -----
-                                </div>
-                                <div class="col-xs-5 amount text-right">
-                                    -----
-                                </div>
-                            </div>
+                            <div class="items" id="genRep-list">
+                            
                             </div>
                             <div class="total text-right">
                             <p class="extra-notes">
@@ -371,9 +339,99 @@
           var { data, error } = await database.from('testing').select().eq('is_active', 0).eq('role', 2);
       
           $('.pending-users').text(data.length);
+
+
+          var { data, error } = await database.from('testing').select(`
+            *,
+            kalusuganBuntis ( * ),
+            kalusuganPWD ( * ),
+            miyembro ( * ),
+            nutrisyon ( * ),
+            pangkabuhayan ( * ),
+            panlipunan ( * )
+          `).eq('role', 2);
+
+          var genRep = {};
+          var html = '';
+
+          genRep[1] = [];
+          genRep[1]['total'] = 0;
+          genRep[1]['bata'] = 0;
+          genRep[1]['pwd'] = 0;
+
+          genRep[2] = [];
+          genRep[2]['total'] = 0;
+          genRep[2]['bata'] = 0;
+          genRep[2]['pwd'] = 0;
+
+          genRep[3] = [];
+          genRep[3]['total'] = 0;
+          genRep[3]['bata'] = 0;
+          genRep[3]['pwd'] = 0;
+
+          genRep[4] = [];
+          genRep[4]['total'] = 0;
+          genRep[4]['bata'] = 0;
+          genRep[4]['pwd'] = 0;
+
+          console.log('data', data);
+
+          for(var x = 0; x < data.length; x++) {
+            if(data[x].sitio) {
+                var sitio = data[x].sitio;
+
+                genRep[sitio]['total'] = genRep[sitio]['total'] + 1;
+
+                if(data[x].miyembro[0]?.Family_members != null) {
+                    if(data[x].miyembro[0]?.Family_members.length > 0) {
+                        for(var y = 0; y < data[x].miyembro[0]?.Family_members.length; y++) {
+                            genRep[sitio]['total'] = genRep[sitio]['total'] + 1;
+                        }
+                    }
+                }
+
+                if(data[x].nutrisyon[0]?.Family_members != null) {
+                    if(data[x].nutrisyon[0]?.Family_members.length > 0) {
+                        for(var y = 0; y < data[x].nutrisyon[0]?.Family_members.length; y++) {
+                            genRep[sitio]['bata'] = genRep[sitio]['bata'] + 1; 
+                        }
+                    } 
+                } 
+
+                if(data[x].kalusuganPWD[0]?.Family_members != null) {
+                    if(data[x].kalusuganPWD[0]?.Family_members.length > 0) {
+                        for(var y = 0; y < data[x].kalusuganPWD[0]?.Family_members.length; y++) {
+                            genRep[sitio]['pwd'] = genRep[sitio]['pwd'] + 1; 
+                        }
+                    }
+                }
+            }
+          }
+
+          for(var x = 1; x <= 4; x++) {
+            html += `
+            <div class="row item">
+                <div class="col-xs-4 desc">
+                    ${x}
+                </div>
+                <div class="col-xs-3 qty">
+                    Bata (${genRep[x]['bata']})<br>
+                    PWD (${genRep[x]['pwd']})
+                </div>
+                <div class="col-xs-5 amount text-right">
+                    ${genRep[x].total}
+                </div>
+            </div>
+            `;
+          }
+
+          $('#genRep-list').html(html);
+       
       }
       
       getData();
+
+
       
       $('.print a').click(function(e) {
           e.preventDefault();

@@ -302,56 +302,60 @@
                       <option value="2">Not Employed</option>
                     </select>
                   </h4>
-                  <canvas id="barChart"></canvas>
+                  <canvas id="barChart1"></canvas>
                 </div>
               </div>
             </div>
-            <!-- <div class="col-lg-6 grid-margin stretch-card">
+            <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Line chart</h4>
+                  <h4 class="card-title">Civil Status</h4>
+                  <canvas id="barChart2"></canvas>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Resident Status  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <select id="resident-status">
+                      <option value="Current Resident">Current Resident</option>
+                      <option value="Previous Resident">Previous Resident</option>
+                      <option value="Deceased Resident">Deceased Resident</option>
+                    </select>
+                  </h4>
+                  <canvas id="barChart3"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Sitio Population</h4>
                   <canvas id="lineChart"></canvas>
                 </div>
               </div>
-            </div> -->
-            
-          </div>
-          <!-- <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Area chart</h4>
-                  <canvas id="areaChart"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Doughnut chart</h4>
-                  <canvas id="doughnutChart"></canvas>
-                </div>
-              </div>
             </div>
           </div>
+        
           <div class="row">
             <div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Pie chart</h4>
-                  <canvas id="pieChart"></canvas>
+                  <h4 class="card-title">Bata/PWD  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <select id="bata-pwd">
+                      <option value="bata">Bata</option>
+                      <option value="pwd">PWD</option>
+                    </select>
+                  </h4>
+                  <canvas id="barGraph1"></canvas>
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Scatter chart</h4>
-                  <canvas id="scatterChart"></canvas>
-                </div>
-              </div>
-            </div>
-          </div> -->
+          </div> 
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
@@ -373,6 +377,7 @@
   <!-- Plugin js for this page -->
   <script src="../../vendors/chart.js/Chart.min.js"></script>
   <script src="../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+  
   <!-- End plugin js for this page -->
   <!-- inject:js -->
   <script src="../../js/off-canvas.js"></script>
@@ -383,14 +388,16 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="../../js/chart.js"></script>
+  <script src="../../js/dashboard.js"></script>
   <!-- End custom js for this page-->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
     const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
     const database = supabase.createClient(supabaseUrl, supabaseKey);
 
-    async function getData(isEmployed = 1) {
+    async function getDataBarChart1(isEmployed = 1) {
       var data = [];
 
       var { data, error } = await database.from('testing').select(`
@@ -460,21 +467,164 @@
         }
       };
 
-      barChart(barChartData, options);
-
+      barChart1(barChartData, options);
     }
 
-    getData();
+    getDataBarChart1();
 
     $('#employment_status').change(function() {
       var value = $(this).val();
-      getData(value);
+      getDataBarChart1(value);
     });
 
     
-    function barChart(data, options) {
-      if ($("#barChart").length) {
-        var barChartCanvas = $("#barChart").get(0).getContext("2d");
+    function barChart1(data, options) {
+      if ($("#barChart1").length) {
+        var barChartCanvas = $("#barChart1").get(0).getContext("2d");
+        var barChart = new Chart(barChartCanvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
+
+    async function getDataBarChart2() {
+      var data = [];
+
+      var { data, error } = await database.from('testing').select().eq('role', 2);
+
+      var barData = [];
+      barData['Single'] = 0;
+      barData['Married'] = 0;
+      barData['Widowed'] = 0;
+
+      for(var x = 0; x < data.length; x++) {
+        var civilStatus = data[x].civilStatus;
+        barData[civilStatus] = barData[civilStatus] + 1;
+      }
+
+      var barChartData = {
+        labels: ["Single", "Married", "Widowed"],
+        datasets: [{
+          label: '# of Votes',
+          data: [barData['Single'], barData['Married'], barData['Widowed']],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      barChart2(barChartData, options);
+    }
+
+    getDataBarChart2();
+
+    function barChart2(data, options) {
+      if ($("#barChart2").length) {
+        var barChartCanvas = $("#barChart2").get(0).getContext("2d");
+        var barChart = new Chart(barChartCanvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
+
+    async function getDataBarChart3(residentStatusVal = 'Current Resident') {
+      var data = [];
+
+      var { data, error } = await database.from('testing').select().eq('role', 2);
+
+      var barData = [];
+      barData['Current Resident'] = 0;
+      barData['Previous Resident'] = 0;
+      barData['Deceased Resident'] = 0;
+
+      for(var x = 0; x < data.length; x++) {
+          var residentStatus = data[x].residentStatus;
+          barData[residentStatus] = barData[residentStatus] + 1;
+      }
+
+      console.log('barData', barData);
+
+      var barChartData = {
+        labels: [residentStatusVal],
+        datasets: [{
+          label: '# of Votes',
+          data: [barData[residentStatusVal]],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      barChart3(barChartData, options);
+    }
+
+    getDataBarChart3();
+
+    $('#resident-status').change(function() {
+      var value = $(this).val();
+      getDataBarChart3(value);
+    });
+
+    
+    function barChart3(data, options) {
+      if ($("#barChart3").length) {
+        var barChartCanvas = $("#barChart3").get(0).getContext("2d");
         // This will get the first returned node in the jQuery collection.
         var barChart = new Chart(barChartCanvas, {
           type: 'bar',
@@ -483,7 +633,193 @@
         });
       }
     }
+
+
+    async function getDataLineChart() {
+      var data = [];
+
+      var { data, error } = await database.from('testing').select().eq('role', 2);
+
+      var barData = [];
+      barData['1'] = 0;
+      barData['2'] = 0;
+      barData['3'] = 0;
+      barData['4'] = 0;
+
+      for(var x = 0; x < data.length; x++) {
+          var sitio = data[x].sitio;
+          barData[sitio] = barData[sitio] + 1;
+      }
+
+      var lineChartData = {
+        labels: ['1','2','3','4'],
+        datasets: [{
+          label: '# of Votes',
+          data: [barData[1], barData[2], barData[3], barData[4]],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      lineChart(lineChartData, options);
+    }
+
+    getDataLineChart();
+
+    function lineChart(data, options) {
+      if ($("#lineChart").length) {
+        var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        new Chart(lineChartCanvas, {
+          type: 'line',
+          data: data,
+          options: options
+        });
+      }
+    }
     
+
+    async function bataPWD(type="bata") {
+      
+      var { data, error } = await database.from('testing').select(`
+            *,
+            kalusuganBuntis ( * ),
+            kalusuganPWD ( * ),
+            miyembro ( * ),
+            nutrisyon ( * ),
+            pangkabuhayan ( * ),
+            panlipunan ( * )
+          `).eq('role', 2);
+
+      var barData = {};
+      var html = '';
+
+      barData[1] = [];
+      barData[1]['bata'] = 0;
+      barData[1]['pwd'] = 0;
+
+      barData[2] = [];
+      barData[2]['bata'] = 0;
+      barData[2]['pwd'] = 0;
+
+      barData[3] = [];
+      barData[3]['bata'] = 0;
+      barData[3]['pwd'] = 0;
+
+      barData[4] = [];
+      barData[4]['bata'] = 0;
+      barData[4]['pwd'] = 0;
+
+      for(var x = 0; x < data.length; x++) {
+        if(data[x].sitio) {
+            var sitio = data[x].sitio;
+            if(type == 'bata') {
+              if(data[x].nutrisyon[0]?.Family_members != null) {
+                  if(data[x].nutrisyon[0]?.Family_members.length > 0) {
+                      for(var y = 0; y < data[x].nutrisyon[0]?.Family_members.length; y++) {
+                          barData[sitio]['bata'] = barData[sitio]['bata'] + 1; 
+                      }
+                  } 
+              } 
+            } else {
+              if(data[x].kalusuganPWD[0]?.Family_members != null) {
+                  if(data[x].kalusuganPWD[0]?.Family_members.length > 0) {
+                      for(var y = 0; y < data[x].kalusuganPWD[0]?.Family_members.length; y++) {
+                          barData[sitio]['pwd'] = barData[sitio]['pwd'] + 1; 
+                      }
+                  }
+              }
+            }
+        }
+      }
+
+      var bataPWDChartData = {
+        labels: ['1','2','3','4'],
+        datasets: [{
+          label: '# of Votes',
+          data: [barData[1][type], barData[2][type], barData[3][type], barData[4][type]],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1,
+          fill: false
+        }]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
+      };
+
+      bataPWDLineChart(bataPWDChartData, options);
+
+    }
+
+    bataPWD();
+
+    $('#bata-pwd').change(function() {
+      var value = $(this).val();
+      bataPWD(value);
+    });
+
+    function bataPWDLineChart(data, options) {
+      if ($("#barGraph1").length) {
+        var barGraph1Canvas = $("#barGraph1").get(0).getContext("2d");
+        new Chart(barGraph1Canvas, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+      }
+    }
+    
+
 
   </script>
 </body>
