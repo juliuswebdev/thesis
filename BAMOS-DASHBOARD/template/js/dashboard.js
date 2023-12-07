@@ -686,14 +686,14 @@
     var userDetails = localStorage.getItem('userDetails') ? JSON.parse(localStorage.getItem('userDetails')) : null;
     if(userDetails != null) {
       if(userDetails.role != 1) {
-        window.location.href = '/get-started.html';
+        // window.location.href = '../../get-started.html';
       }
       $('#userAdmin, .userAdmin').text(userDetails.username);
       $('#userAdminEmail').text(userDetails.email);
       $('.userAddress').text(userDetails.sitio + ' ' + userDetails.purok);
 
     } else {
-      window.location.href = '/get-started.html';
+      // window.location.href = '../../get-started.html';
     }
 
     $(document).on('click', '#sign-out', function(e) {
