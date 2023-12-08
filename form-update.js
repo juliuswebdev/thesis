@@ -413,7 +413,7 @@ async function nextPage2() {
   
 
   alert('User Updated!');
-  return false;
+  // return false;
   window.location.href = 'index.html';
   return false;
 }
