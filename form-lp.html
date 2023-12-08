@@ -15,241 +15,421 @@
     <section class="container">
       <header>BAMOS FAMILY DETAILS<br><h6>BARANGAY BAHAY PARE FAMILY PROFILE</h6> </header>
       <form action="#" class="form">
-        <div class="input-box">
-          <label></label>
-          <input type="text" placeholder="Family representative name"  name="member_name"/>
-        </div>
-
-        <div class="input-box">
-            <div class="column">
-          <label></label>
-          <input type="text" placeholder="Address" />
-          <input type="number" placeholder="Sitio"/>
-          <input type="number" placeholder="Purok"/>
-        </div>
-        </div>
-
-        <div class="column">
           <div class="input-box">
-            <label></label>
-            <input type="text" placeholder="Family Relationship"/>
+            <label>Name</label>
+            <input type="text" id="fullname" placeholder="Enter your full name" value="" />
           </div>
-          
+    
           <div class="input-box">
-            <label></label>
-            <input type="number" placeholder="House number"/>
-          </div>
+            <label>Address</label>
+            <input type="text" id="completeAdd" placeholder="Enter your full address" required />
           </div>
 
           <div class="column">
             <div class="input-box">
-              <label></label>
-              <input type="text" placeholder="Gender" />
+              <label>Family Relationship</label>
+              <select id="relations" class="select-box" required>
+                <option hidden>You are the...</option>
+                <option value="GrandMother">GrandMother</option>
+                <option value="GrandFather">GrandFather</option>
+                <option value="Mother">Mother</option>
+                <option value="Father">Father</option>
+                <option value="Husband">Husband</option>
+                <option value="Wife">Wife</option>
+                <option value="Son">Son</option>
+                <option value="Daughter">Daughter</option>
+                <option value="Uncle">Uncle</option>
+                <option value="Auntie">Auntie</option>
+                <option value="Nephew">Nephew</option>
+                <option value="Niece">Niece</option>
+                <option value="Grandchild">Grandchild</option>
+                <option value="Cousin">Cousin</option>
+              </select>
             </div>
-            
+    
             <div class="input-box">
-              <label</label>
-              <input type="date" name="bdate" placeholder="" />
+              <label>House number</label>
+              <input type="number" placeholder="Enter house number" id="houseNum" required />
             </div>
+            <div class="input-box">
+              <label>Birth Date</label>
+              <input type="date" placeholder="Enter birth date" id="birthD"  required />
             </div>
+          </div>
 
-            
-            <br>
-        <div class="input-box member">
-            <label>Family members and details:</label>
+          <div class="member-gender-box">
+            <h3>Gender</h3>
+            <div class="gender-option">
+              <div class="gender">
+                <input type="radio" id="check-male" name="gender" value="Male" />
+                <label for="check-male">Male &emsp;&emsp;</label>
+                <input type="radio" id="check-female" name="gender" value="Female" />
+                <label for="check-female">Female &emsp;&emsp;</label>
+                <input type="radio" id="check-other" name="gender" value="Prefer_not_to_say" />
+                <label for="check-other">Prefer not to say</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <div class="checkbox">   
+              <label> <input type="checkbox" value="isEmployee" name="isEmployee" style="right: 426px; "> Employed</label>
+            </div>
+          </div>
+
+
           <div class="column">
-            <input type="text" name="fmember1" placeholder="Member 1"/>
-            <input type="date" name="fbday1" placeholder="Date of birth" />
-            <input type="number" name="fage1"  placeholder="Age" />
-            </div> 
-            
-            <div class="column">
-                <input type="text" name="fcivilstatus1" placeholder="civil status"/>
-                <input type="text" name="frelationship1" placeholder="Relationship to the member"/>
+            <div class="select-box">
+              <select id="sitio">
+                <option value="0">Sitio</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
             </div>
-
-            <div class="column">
-                <input type="text" name="freligion1" placeholder="Religion"/>
-                <input type="text" name="feducation1" placeholder="Educational Attainment"/>
-                <input type="text" name="fincome1" placeholder="Source of income/Work"/>
-                <input type="text" name="fgender1" placeholder="Gender"/>
+            <div class="select-box">
+              <select id="purok">
+                <option value="0">Purok</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
             </div>
-            
-            <div class="column">
-                <input type="text" name="fyears1" placeholder="Years of staying"/>
-                <input type="text" name="fphilhealth1" placeholder="Philhealth no."/>
-                <input type="text" name="fmonthlyincome1" placeholder="Monthly income"/>
+          </div>
+
+          <div class="memContainer"></div>
+
+          <!--- Form 2 -->
+          <div class="column">
+            <div class="select-box">
+              <select id="lupa" required>
+                <option hidden>A. Lupang Kinatatayuan</option>
+                <option value="Pag-aari">Pag-aari</option>
+                <option value="Inuupahan">Inuupahan</option>
+                <option value="Iba_pa">Iba pa</option>
+              </select>
             </div>
-            <br>
+            <div class="select-box">
+              <select id="bahayz">
+                <option hidden>B. Bahay na Tinitirhan</option>
+                <option value="Pag-aari">Pag-aari</option>
+                <option value="Inuupahan">Inuupahan</option>
+                <option value="Iba_Pa">Iba pa</option>
+              </select>
+            </div>
+          </div>
 
+          <div class="column">
+            <div class="select-box">
+              <select id="upahan">
+                <option hidden>C. Lupang Sakahan/Pinagyayaman</option>
+                <option value="Pag-aari">Pag-aari</option>
+                <option value="Inuupahan">Inuupahan</option>
+                <option value="Iba_Pa">Iba pa</option>
+              </select>
+            </div>
+            <div class="select-box">
+              <select id="basura">
+                <option hidden>D. Paraan ng Pagtatapon ng Basura</option>
+                <option value="Sinusunog">Sinusunog</option>
+                <option value="Hukay na may takip">Hukay na may takip</option>
+                <option value="Kinukulekta">Kinukulekta</option>
+                <option value="Iba_Pa">Iba pa</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="select-box">
+              <select id="luto">
+                <option hidden>E. Gamit na Enerhiya sa Pagluluto</option>
+                <option value="Gas">Gas</option>
+                <option value="Kahoy">Kahoy</option>
+                <option value="Kuryente">Kuryente</option>
+                <option value="LPG">LPG</option>
+                <option value="Iba_Pa">Iba pa</option>
+              </select>
+            </div>
+            <div class="select-box">
+              <select id="tubig">
+                <option hidden>F. Pinag kukunan ng Tubig</option>
+                <option value="Poso Artesiano">Poso Artesiano</option>
+                <option value="NAWASA">NAWASA</option>
+                <option value="Balon">Balon</option>
+                <option value="Iba_Pa">Iba pa</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="select-box">
+              <select id="dumi">
+                <option hidden>G. Uri ng Palikuran</option>
+                <option value="Flush">Flush</option>
+                <option value="DeBuhos">De buhos</option>
+                <option value="Hinukay">Hinukay</option>
+                <option value="Iba_Pa">Iba pa</option>
+              </select>
+            </div>
+            <div class="select-box">
+              <select id="kuryente">
+                <option hidden>H. Pinag mumulan ng Elektrisidad</option>
+                <option value="Kuryente">Kuryente</option>
+                <option value="Gaas">Gaas</option>
+                <option value="Iba_Pa">Iba pa</option>
+              </select>
+            </div>
+            <div class="select-box">
+              <select id="sasakyan">
+                <option hidden>I. Sasakyan</option>
+                <option value="Kotse">Kotse</option>
+                <option value="Jeep">Jeep</option>
+                <option value="Motorsiklo">Motorsiklo</option>
+                <option value="Van">Van</option>
+                <option value="Truck">Truck</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="select-box">
+              <select id="agrikultura">
+                <option hidden>J. Kasangkapang pang Agrikultura</option>
+                <option value="Hand Tractor">Hand tractor</option>
+                <option value="Kalabaw">Kalabaw</option>
+                <option value="Traktora">Traktora</option>
+                <option value="Iba_Pa">Iba pa</option>
+              </select>
+            </div>
+            <div class="select-box">
+              <select id="poultry">
+                <option hidden>K. Pang Komersiyo</option>
+                <option value="Babuyan">Babuyan</option>
+                <option value="Manukan">Manukan</option>
+                <option value="Itikan">Itikan</option>
+                <option value="Bakahan">Bakahan</option>
+                <option value="Iba_Pa">Iba pa</option>
+              </select>
+            </div>
+          </div>
+
+            <div class="input-box">
+              <label>L. Mga Kasangkapan sa Bahay</label>
+            </div>
             <div class="column">
-              <input type="text" name="fmember2" placeholder="Member 2"/>
-              <input type="date" name="fbday2" placeholder="Date of birth" />
-              <input type="number" name="fage2"  placeholder="Age" />
-              </div> 
-              
-              <div class="column">
-                  <input type="text" name="fcivilstatus2" placeholder="civil status"/>
-                  <input type="text" name="frelationship2" placeholder="Relationship to the member"/>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Radyo" name="radyo">Radyo</label>
               </div>
-  
-              <div class="column">
-                  <input type="text" name="freligion2" placeholder="Religion"/>
-                  <input type="text" name="feducation2" placeholder="Educational Attainment"/>
-                  <input type="text" name="fincome2" placeholder="Source of income/Work"/>
-                  <input type="text" name="fgender2" placeholder="Gender"/>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Telebisyon" name="telebisyon">Telebisyon</label>
               </div>
-              
-              <div class="column">
-                  <input type="text" name="fyears2" placeholder="Years of staying"/>
-                  <input type="text" name="fphilhealth2" placeholder="Philhealth no."/>
-                  <input type="text" name="fmonthlyincome2" placeholder="Monthly income"/>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Gas Stove" name="gas">Gas stove</label>
               </div>
-                <br>
-
-                <div class="column">
-                  <input type="text" name="fmember3" placeholder="Member 3"/>
-                  <input type="date" name="fbday3" placeholder="Date of birth" />
-                  <input type="number" name="fage3"  placeholder="Age" />
-                  </div> 
-                  
-                  <div class="column">
-                      <input type="text" name="fcivilstatus3" placeholder="civil status"/>
-                      <input type="text" name="frelationship3" placeholder="Relationship to the member"/>
-                  </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Washing Machine" name="washingmachine">Washing Machine</label>
+              </div>
+            </div>
       
-                  <div class="column">
-                      <input type="text" name="freligion3" placeholder="Religion"/>
-                      <input type="text" name="feducation3" placeholder="Educational Attainment"/>
-                      <input type="text" name="fincome3" placeholder="Source of income/Work"/>
-                      <input type="text" name="fgender3" placeholder="Gender"/>
-                  </div>
-                  
-                  <div class="column">
-                      <input type="text" name="fyears3" placeholder="Years of staying"/>
-                      <input type="text" name="fphilhealth3" placeholder="Philhealth no."/>
-                      <input type="text" name="fmonthlyincome3" placeholder="Monthly income"/>
-                  </div>          
-          </div>
-          <br>
-          <div class="input-box member">
-            <label>*PANGKABUHAYAN*</label>
-          <div class="column">
-            <input type="text" placeholder="A. Lupang Kinatatayuan"/>
-            <input type="text" placeholder="B. Bahay na Tinitirhan" />
-            <input type="text" placeholder="C. Lupang Sakahan/Pinagyayaman" />
-            </div> 
-
             <div class="column">
-                <input type="text" placeholder="D. Paraan ng Pagtapon ng Basura"/>
-                <input type="text" placeholder="E. Gamit na Enerhiya sa Pagluluto" />
-                <input type="text" placeholder="F. Pinagkukunan ng Tubig"/>
-            </div>  
-
-            <div class="column">
-                <input type="text" placeholder="G. Uri ng Palikuran"/>
-                <input type="text" placeholder="H. Pinagmumulan ng Elektrisidad" />
-                <input type="text" placeholder="I. Sasakyan"/>
-            </div> 
-
-            <div class="column">
-                <input type="text" placeholder="J. Kasangkapang pang Agrikultura"/>
-                <input type="text" placeholder="K. Pang Komersiyo" />
-                <input type="text" placeholder="L. Mga Kasangkapan sa Bahay"/>
-            </div> 
-        </div>
-        <br>
-
-
-        <div class="input-box">
-            <label>*NUTRISYON: Mga Batang May Edad na 0-6 Taong Gulang*</label>
-          </div>  
-            <div class="input-box member">
-              <label></label>
-              <div class="column">
-              <input type="text" name="nmemeber1" placeholder="Member 1"/>
-              <input type="text" name="nkasangkapan1" placeholder="Kapanganakan"/>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Aircon" name="aircon">Aircon</label>
               </div>
-              <div class="column">
-                <input type="number" name="ngulang1" placeholder="Gulang sa buwan" />
-                <input type="text" name="ntimbang1" placeholder="Timbang "/>
-                <input type="text" name="nimunisasyon1" placeholder="Imunisasyon"/>
-                <input type="text" name="nnasagawa1" placeholder="Nasagawa"/>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Computer" name="computer">Computer</label>
               </div>
-              <br>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Ref Freezer" name="ref">Ref/Freezer</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Rice Cooker" name="ricecooker">Rice Cooker</label>
+              </div>
+            </div>
+      
+            <div class="column">
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Plantsa" name="plantsa">Plantsa</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Microwave" name="microwave">Microwave</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Cellphone" name="cellphone">Cellphone</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Water Dispenser" name="waterdispenser">Water Dispenser</label>
+              </div>
+            </div>
+            <div class="column">
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Karaoke" name="karaoke">Karaoke</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="CD/DVD" name="cd">CD/DVD</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Electric Fan" name="electricfan">Electric Fan</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" class="khaus" value="Electric Stove" name="electricstove">Electric Stove</label>
+              </div>
+            </div>
 
-              <div class="column">
-                <input type="text" name="nmemeber2" placeholder="Member 1"/>
-                <input type="text" name="nkasangkapan2" placeholder="Kapanganakan"/>
-                </div>
-                <div class="column">
-                  <input type="number" name="ngulang2" placeholder="Gulang sa buwan" />
-                  <input type="text" name="ntimbang2" placeholder="Timbang "/>
-                  <input type="text" name="nimunisasyon2" placeholder="Imunisasyon"/>
-                  <input type="text" name="nnasagawa2" placeholder="Nasagawa"/>
-                </div>
-                <br>
+            <!--- FORM 3 -->
+            <h2>Nutrisyon</h2>
+            <div class="form3Container"></div>
 
-                <div class="column">
-                  <input type="text" name="nmemeber3" placeholder="Member 1"/>
-                  <input type="text" name="nkasangkapan3" placeholder="Kapanganakan"/>
-                  </div>
-                  <div class="column">
-                    <input type="number" name="ngulang3" placeholder="Gulang sa buwan" />
-                    <input type="text" name="ntimbang3" placeholder="Timbang "/>
-                    <input type="text" name="nimunisasyon3" placeholder="Imunisasyon"/>
-                    <input type="text" name="nnasagawa3" placeholder="Nasagawa"/>
-                  </div>
+            <!--- FORM 4 -->
+            <h2>Kasama sa bahay na May Kapansanan</h2>
+            <div class="form4Container"></div>
+
+            <!--- FORM 5 --->
+            <h2>KALUSUGANG PAMPAMILYA</h2>
+            <div class="column">
+              <div class="select-box">
+                <select id="kabuuan">
+                  <option hidden>A. Kabuuang bilang ng Mag-asawang Nagsasama</option>
+                  <option>Kasal</option>
+                  <option>Live-in</option>
+                </select>
+            </div>
+            <div class="select-box">
+              <select id="pagbubuntis">
+                <option hidden>B. Bilang ng Ipinagbuntis</option>
+                <option>Lalaki</option>
+                <option>Babae</option>
+                <option>Nakunan</option>
+              </select>
+          </div>       
             </div>
             <br>
-
-            <div class="input-box">
-                <label>*KALUSUGANG PAMPAMILYA*</label>
-              </div>  
-                <div class="input-box member">
-                  <label></label>
-                  <div class="column">
-                  <input type="text" name="pwdmember1" placeholder="Member 1"/>
-                  <input type="text" name="pwdkapanganakan1" placeholder="Kapanganakan"/>
+            <br>
+  
+            <div class="column">
+              <div class="select-box">
+                <select id="balak">
+                  <option hidden>C. May Balak pa bang mag-anak?</option>
+                  <option>Mayroon</option>
+                  <option>Wala</option>
+                </select>
+            </div>
+            <div class="select-box">
+              <select id="nagpapagamot">
+                <option hidden>D. Kanino nagpapagamot?</option>
+                <option>Ospital/Klinika</option>
+                <option>Health Center</option>
+                <option>Albularyo</option>
+                <option>Iba pa</option>
+              </select>
+          </div> 
+          <div class="select-box">
+              <select id="kalagayan">
+                <option hidden>E. Kalagayan ng pagiging Ina</option>
+                <option>Nagpapasuso</option>
+                <option>Nagdadalantao</option>
+                <option>Nagpapasuso at Nagdadalantao</option>
+                <option>Wala alinman</option>
+              </select>
+            </div>
+            </div>
+            <br>
+            <br>
+                  <div class="input-box">
+                    <label>F. Gamit na FP Method:</label>
                   </div>
                   <div class="column">
-                    <input type="number" name="pwdedad1" placeholder="Edad" />
-                    <input type="text" name="pwdkapansanan1" placeholder="Kapansanan"/>
-                    <input type="text" name="pwdkasarian1" placeholder="Kasarian"/>
+                      <div class="checkbox">
+                        <label><input type="checkbox" class="fpp" value="IUD">IUD</label>
+                      </div>
+                      <br>
+                      <div class="checkbox">
+                        <label><input type="checkbox" class="fpp" value="Condom">Condom</label>
+                      </div>
+                      <br>
+                      <div class="checkbox">
+                        <label><input type="checkbox" class="fpp" value="DMPA/INJ">DMPA/INJ</label>
+                      </div>
+                      <br>
+                      <div class="checkbox">
+                        <label><input type="checkbox" class="fpp" value="Implant">Implant</label>
+                      </div>
+                      <br>
+                      </div> 
+                      <br>
+                
+                <div class="column">
+                  <div class="checkbox">
+                    <label><input type="checkbox" class="fpp" value="SDM">SDM</label>
                   </div>
+                  <br>
+                  <br>
+                  <div class="checkbox">
+                    <label><input type="checkbox" class="fpp" value="BTL">BTL</label>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="checkbox">
+                    <label><input type="checkbox" class="fpp" value="VAS">VAS</label>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="checkbox">
+                    <label><input type="checkbox" class="fpp" value="PII">PII</label>
+                  </div>
+                  <br>
+                  <br>
                 </div>
-                <br>             
-            
-                <div class="input-box">
-                    <label>*KALUSUGANG PAMPAMILYA*</label>
-                  </div>  
-                    <div class="input-box member">
-                      <label></label>
-                      <div class="column">
-                      <input type="text" name="buntiskabuuan1" placeholder="A. Kabuuang bilang ng Mga-asawang Nagsasama"/>
-                      <input type="text" name="buntispagbubuntis1" placeholder="B. Bilang ng Ipinagbuntis"/>
-                      </div>
-                      <div class="column">
-                        <input type="text" name="buntisbalak1" placeholder="C. May Balak pa bang mag-anak" />
-                        <input type="text" name="buntisnagpapagamot1" placeholder="D. Kanino Nagpapagamot"/>
-                        <input type="text" name="buntiskalagayan1" placeholder="E. Kalagayan ng pagiging Ina"/>
-                        <input type="text" name="buntismethod1" placeholder="Gamit na FP Method"/>
-                      </div>
+                <br>
+  
+                <div class="column">
+                  <div class="checkbox">
+                    <label><input type="checkbox" class="fpp" value="CMM">CMM</label>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="checkbox">
+                    <label><input type="checkbox" class="fpp" value="BST">BST</label>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="checkbox">
+                    <label><input type="checkbox" class="fpp" value="STM">STM</label>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="checkbox">
+                    <label><input type="checkbox" class="fpp" value="LAM">LAM</label>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="checkbox">
+                      <label><input type="checkbox" class="fpp" value="Wala">Wala</label>
                     </div>
+                    <br>
+                    <br>
+                </div> 
 
-                    <div class="input-box">
-                        <label>*PANLIPUNAN*</label>
-                      </div>  
-                        <div class="input-box member">
-                          <label></label>
-                          <input type="text" placeholder="A. Samahang Kinasaniban"/>
-                          <input type="text" placeholder="B. Kanino Sumasangguni kung may suliraning pambarangay"/>
-                          <input type="number" placeholder="C. Kanino Sumasangguni kung may suliraning pambayan" />
-                        </div>
+          <!--- FORM 6 --->
+          <h2>PANLIPUNAN</h2>
+          <div class="input-box member">
+            <label>A. Samahang Kinasaniban:</label>
+            <div class="f61 row"></div>
+          </div>
+            <br>
+        
+            <div class="input-box member">
+                <label>B. Kanino Sumasangguni kung may suliraning pambarangay?</label>
+                <div class="f62 row"></div>
+              </div>
+                <br>
 
+                <div class="input-box member">
+                    <label>C. Kanino Sumasangguni kung may suliraning pambayan?</label>
+                    <div class="f63 row"></div>
+                  </div>
 
-
-              <br>
           <div class="column">
             <input type="hidden" name="tbl1" value="" />
             <input type="hidden" name="tbl2" value="" />
@@ -259,14 +439,22 @@
             <input type="hidden" name="tbl6" value="" />
             <!-- <button>Save changes</button> -->
             <button class="submit" disabled>Save changes</button>
-            </div>
-
+          </div>
       </form>
     </section>
     <script src="form-global.js"></script>
   </body>
 
 <style>
+h2 {
+  margin:2rem 0;
+}
+
+.col-6 {
+  display: inline-block;
+  width: 50%;
+}
+
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
@@ -421,279 +609,6 @@ input::placeholder {
       }
       //document.getElementById("demo").innerHTML = text;
     });
-      
-    
-
-
-// Import the Supabase client
-
-// Replace 'YOUR_SUPABASE_URL' and 'YOUR_SUPABASE_KEY' with your Supabase project URL and API key
-const supabaseUrl = 'https://hzyiqzmdkocpumguttzb.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6eWlxem1ka29jcHVtZ3V0dHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1Mzc5OTMsImV4cCI6MjAxNjExMzk5M30.-JNHzAkpBh_EN99ZiYGbu1q4ZsRSE3WapgBRMPrkiZs';
-
-// Create a Supabase client
-const database = supabase.createClient(supabaseUrl, supabaseKey);
-
-// Function to check the connection status and show an alert
-async function checkConnection() {
-  try {
-    // Try to make a request to Supabase to check the connection
-    //let { data, error } = await database.from('testing').select().eq('id', userData.id).limit(1).single();
-    let {error}         = await database.from('miyembro');
-    let member          = await database.from('miyembro').select().eq('user_id', userData.id).eq('id',46).limit(1).single();
-    let pangkabuhayan   = await database.from('pangkabuhayan').select().eq('user_id', userData.id).eq('id',34).limit(1).single();
-    let nutrisyon       = await database.from('nutrisyon').select().eq('user_id', userData.id).eq('id',26).limit(1).single();
-    let kalusuganPWD    = await database.from('kalusuganPWD').select().eq('user_id', userData.id).eq('id',9).limit(1).single();
-    let kalusuganBuntis = await database.from('kalusuganBuntis').select().eq('user_id', userData.id).eq('id',12).limit(1).single();
-    let panlipunan      = await database.from('panlipunan').select().eq('user_id', userData.id).eq('id',15).limit(1).single();
-    //console.log(data);
-    
-  
-    // added id of the records for tracing 
-    $(`[name="tbl1"]`).val(member.data.id);
-    $(`[name="tbl2"]`).val(pangkabuhayan.data.id);
-    $(`[name="tbl3"]`).val(nutrisyon.data.id);
-    $(`[name="tbl4"]`).val(kalusuganPWD.data.id);
-    $(`[name="tbl5"]`).val(kalusuganBuntis.data.id);
-    $(`[name="tbl6"]`).val(panlipunan.data.id);
-    
-
-    $('[name="member_name"]').val(`${member.data.pinuno}`);
-    $('[placeholder="Address"]').val(`${member.data.nakatira}`);
-    $('[placeholder="Sitio"]').val(`${member.data.Sitio}`);
-    $('[placeholder="Purok"]').val(`${member.data.Purok}`);
-    $('[placeholder="Family Relationship"]').val(`${member.data.sinoka}`);
-    $('[placeholder="House number"]').val(`${member.data.bahayNumero}`);
-    $('[placeholder="Family Relationship"]').val(`${member.data.sinoka}`);
-    $('[placeholder="Gender"]').val(`${member.data.kasarian}`);
-    
-    //$('[name="bdate"]').val(`${member.data.kasarian}`);
-
-
-    for($i = 1; $i <= 3; $i++) {
-      const memberz = member.data[`Family_member_${$i}`][0];
-
-      nullChecker(`[name="fmember${$i}"]`, memberz[`member${$i}`]);
-      nullChecker(`[name="fbday${$i}"]`, memberz.bday);
-      nullChecker(`[name="fage${$i}"]`, memberz.age);
-      nullChecker(`[name="fcivilstatus${$i}"]`, memberz.civilStat);
-      nullChecker(`[name="frelationship${$i}"]`, memberz.relation);
-      nullChecker(`[name="feducation${$i}"]`, memberz.edAttain);
-      nullChecker(`[name="fincome${$i}"]`, memberz.sourceIncome);
-      nullChecker(`[name="fgender${$i}"]`, memberz.genderPick);
-      nullChecker(`[name="fyears${$i}"]`, memberz.stay);
-      nullChecker(`[name="fmonthlyincome${$i}"]`, memberz.incomePick);
-    
-    }
-    
-    
-    kasangkapan = JSON.parse(pangkabuhayan.data.MgaKasangkapansaBahay); 
-    nullChecker('[placeholder="A. Lupang Kinatatayuan"]', pangkabuhayan.data.LupangKinatatayuan); 
-    nullChecker('[placeholder="B. Bahay na Tinitirhan"]', pangkabuhayan.data.BahaynaTinitirhan); 
-    nullChecker('[placeholder="C. Lupang Sakahan/Pinagyayaman"]', pangkabuhayan.data.LupangSakahanPinagyayaman); 
-    nullChecker('[placeholder="D. Paraan ng Pagtapon ng Basura"]', pangkabuhayan.data.ParaanPagtataponngBasura); 
-    nullChecker('[placeholder="E. Gamit na Enerhiya sa Pagluluto"]', pangkabuhayan.data.GamitnaEnerhiyasaPagluluto); 
-    nullChecker('[placeholder="F. Pinagkukunan ng Tubig"]', pangkabuhayan.data.PinagkukunanngTubig); 
-    nullChecker('[placeholder="G. Uri ng Palikuran"]', pangkabuhayan.data.UringPalikuran); 
-    nullChecker('[placeholder="H. Pinagmumulan ng Elektrisidad"]', pangkabuhayan.data.PinagmumulanngElektrisidad); 
-    nullChecker('[placeholder="J. Kasangkapang pang Agrikultura"]', pangkabuhayan.data.KasangkapangpangAgrukultura); 
-    nullChecker('[placeholder="K. Pang Komersiyo"]', pangkabuhayan.data.PangKomersiyo); 
-    nullChecker('[placeholder="L. Mga Kasangkapan sa Bahay"]', kasangkapan.join(", "));  
-
-   // console.log(member1);
-    //$('[placeholder="House number"]').val(`${}`);
-
-    for($i = 1; $i <= 3; $i++) {
-      const nutrisyonz = JSON.parse(nutrisyon.data[`member_${$i}`]);
-
-      nullChecker(`[name="nmemeber${$i}"]`, nutrisyonz.name);
-      nullChecker(`[name="nkasangkapan${$i}"]`, nutrisyonz.bday);
-      nullChecker(`[name="ngulang${$i}"]`, nutrisyonz.age);
-      nullChecker(`[name="ntimbang${$i}"]`, nutrisyonz.weight);
-      nullChecker(`[name="nimunisasyon${$i}"]`, nutrisyonz.imunization);
-      nullChecker(`[name="nnasagawa${$i}"]`, nutrisyonz.nagsagawa);
-    
-    }
-
-
-    for($i = 1; $i <= 3; $i++) {
-      const kalusuganPWDz = kalusuganPWD.data[`Family_mem_${$i}`][0];
-
-      nullChecker(`[name="pwdmember${$i}"]`, kalusuganPWDz[`member${$i}`]);
-      nullChecker(`[name="pwdkapanganakan${$i}"]`, kalusuganPWDz[`kapanganakan${$i}`]);
-      nullChecker(`[name="pwdedad${$i}"]`, kalusuganPWDz[`edad${$i}`]);
-      nullChecker(`[name="pwdkapansanan${$i}"]`, kalusuganPWDz[`kapansanan${$i}`]);
-      nullChecker(`[name="pwdkasarian${$i}"]`, kalusuganPWDz[`kasarian${$i}`]);
-    
-    }
-
-    
-    const fpMethod = JSON.parse(kalusuganBuntis.data.FPmethod);
-
-
-    nullChecker(`[name="buntiskabuuan1"]`, kalusuganBuntis.data.MagAsawangNagsasama);
-    nullChecker(`[name="buntispagbubuntis1"]`, kalusuganBuntis.data.BilangngIpinagbuntis);
-    nullChecker(`[name="buntisbalak1"]`, kalusuganBuntis.data.MayBalakpaMaganak);
-    nullChecker(`[name="buntisnagpapagamot1"]`, kalusuganBuntis.data.Nagpapagamot);
-    nullChecker(`[name="buntiskalagayan1"]`, kalusuganBuntis.data.Kalagayan);
-    nullChecker(`[name="buntismethod1"]`, fpMethod.join(", "));
-
-
-    
-    
-    
-
-    const panlipunan1 = JSON.parse(panlipunan.data.SamahangKinasaniban);
-    const panlipunan2 = JSON.parse(panlipunan.data.Pambarangay);
-    const panlipunan3 = JSON.parse(panlipunan.data.Pambayan);
-
-    nullChecker(`[placeholder="A. Samahang Kinasaniban"]`, panlipunan1.join(", "));
-    nullChecker(`[placeholder="B. Kanino Sumasangguni kung may suliraning pambarangay"]`, panlipunan2.join(", "));
-    nullChecker(`[placeholder="C. Kanino Sumasangguni kung may suliraning pambayan"]`, panlipunan3.join(", "));
-    
-
-
-
-    // If there's an error, log it
-    if (error) {
-      console.error('Error connection! Please try again.', error.message);
-    } else {
-      // If successful, show an alert
-      console.log('Connection secured!');
-      $('.submit').removeAttr('disabled');
-    }
-  } catch (error) {
-    console.error('Error:', error.message);
-  }
-
-
-  function nullChecker(elem, value) {
-    if (value !== null ) {
-      $(elem).val(value);  
-    }
-    
-  }
-}
-
-// Call the checkConnection function
-checkConnection();
-
-
-
-
-async function nextPage2() {
-
-  let miyembro = {
-    pinuno: $('[name="member_name"]').val(),
-    nakatira: $('[placeholder="Address"]').val(),
-    Sitio: $('[placeholder="Sitio"]').val(),
-    Purok: $('[placeholder="Purok"]').val(),
-    sinoka: $('[placeholder="Family Relationship"]').val(),
-    bahayNumero: $('[placeholder="House number"]').val(),
-    kasarian: $('[placeholder="Gender"]').val(),
-    Family_member_1:new Array,
-    Family_member_2:new Array,
-    Family_member_3:new Array};
-  for($i = 1; $i <= 3; $i++) {
-    miyembro[`Family_member_${$i}`].push({
-      [`member${$i}`]: $(`[name="fmember${$i}"]`).val(),
-      bday: $(`[name="fbday${$i}"]`).val(),
-      age: $(`[name="fage${$i}"]`).val(),
-      civilStat: $(`[name="fcivilstatus${$i}"]`).val(),
-      relation: $(`[name="frelationship${$i}"]`).val(),
-      edAttain: $(`[name="feducation${$i}"]`).val(),
-      sourceIncome: $(`[name="fincome${$i}"]`).val(),
-      genderPick: $(`[name="fgender${$i}"]`).val(),
-      stay: $(`[name="fyears${$i}"]`).val(),
-      incomePick: $(`[name="fmonthlyincome${$i}"]`).val(),
-    });
-  }
-
-    let pangkabuhayan =
-    {
-      LupangKinatatayuan: $('[placeholder="A. Lupang Kinatatayuan"]').val(),
-      BahaynaTinitirhan: $('[placeholder="B. Bahay na Tinitirhan"]').val(),
-      LupangSakahanPinagyayaman: $('[placeholder="C. Lupang Sakahan/Pinagyayaman"]').val(),
-      ParaanPagtataponngBasura: $('[placeholder="D. Paraan ng Pagtapon ng Basura"]').val(),
-      GamitnaEnerhiyasaPagluluto: $('[placeholder="E. Gamit na Enerhiya sa Pagluluto"]').val(),
-      PinagkukunanngTubig: $('[placeholder="F. Pinagkukunan ng Tubig"]').val(),
-      UringPalikuran: $('[placeholder="G. Uri ng Palikuran"]').val(),
-      PinagmumulanngElektrisidad: $('[placeholder="H. Pinagmumulan ng Elektrisidad"]').val(),
-      KasangkapangpangAgrukultura: $('[placeholder="J. Kasangkapang pang Agrikultura"]').val(),
-      PangKomersiyo: $('[placeholder="K. Pang Komersiyo"]').val(),
-      MgaKasangkapansaBahay: JSON.stringify($('[placeholder="L. Mga Kasangkapan sa Bahay"]').val().split(", "))
-    }
-
-   
-
-   let nutrisyon = {'member_1':new Array,'member_2':new Array,'member_3':new Array};
-
-    for($i = 1; $i <= 3; $i++) {
-      nutrisyon[`member_${$i}`].push({
-        name: $(`[name="nmemeber${$i}"]`).val(),
-        bday: $(`[name="nkasangkapan${$i}"]`).val(),
-        age: $(`[name="ngulang${$i}"]`).val(),
-        weight: $(`[name="ntimbang${$i}"]`).val(),
-        imunization: $(`[name="nimunisasyon${$i}"]`).val(),
-        nagsagawa: $(`[name="nnasagawa${$i}"]`).val()
-      })
-    }
-
-    
-
-    let kalusuganPWD = {"Family_mem_1":new Array,"Family_mem_2":new Array,"Family_mem_3":new Array};
-
-    for($i = 1; $i <= 3; $i++) {
-      kalusuganPWD[`Family_mem_${$i}`].push({
-        [`member${$i}`]: $(`[name="pwdmember${$i}"]`).val(),
-        [`kapanganakan${$i}`]: $(`[name="pwdkapanganakan${$i}"]`).val(),
-        [`edad${$i}`]:$(`[name="pwdedad${$i}"]`).val(),
-        [`kapansanan${$i}`]:$(`[name="pwdkapansanan${$i}"]`).val(),
-        [`kasarian${$i}`]:$(`[name="pwdkasarian${$i}"]`).val()
-      });
-    }
-
-    
-
-    let kalusuganBuntis = {
-      MagAsawangNagsasama:$(`[name="buntiskabuuan1"]`).val(),
-      BilangngIpinagbuntis:$(`[name="buntispagbubuntis1"]`).val(),
-      MayBalakpaMaganak:$(`[name="buntisbalak1"]`).val(),
-      Nagpapagamot:$(`[name="buntisnagpapagamot1"]`).val(),
-      Kalagayan:$(`[name="buntiskalagayan1"]`).val(),
-      FPmethod:JSON.stringify($(`[name="buntismethod1"]`).val().split(", "))
-    }
-
-    
-    let panlipunan = {
-      SamahangKinasaniban: JSON.stringify($(`[placeholder="A. Samahang Kinasaniban"]`).val().split(", ")),
-      Pambarangay: JSON.stringify($(`[placeholder="B. Kanino Sumasangguni kung may suliraning pambarangay"]`).val().split(", ")),
-      Pambayan: JSON.stringify($(`[placeholder="C. Kanino Sumasangguni kung may suliraning pambayan"]`).val().split(", "))
-    }
-
-
-    var fields = [
-      [miyembro,"miyembro",parseInt($("[name='tbl1'").val())],
-      [pangkabuhayan,"pangkabuhayan",parseInt($("[name='tbl2'").val())],
-      [nutrisyon,"nutrisyon",parseInt($("[name='tbl3'").val())],
-      [kalusuganPWD,"kalusuganPWD",parseInt($("[name='tbl4'").val())],
-      [kalusuganBuntis,"kalusuganBuntis",parseInt($("[name='tbl5'").val())],
-      [panlipunan,"panlipunan",parseInt($("[name='tbl6'").val())]
-    ];
-
-  fields.forEach(async function(field) {
-    const { data, error } = await database
-      .from(field[1])
-      .update([field[0]])
-      .eq('id', field[2]);
-  })
-  
-
-  
-
-  alert('User Updated!');
-  window.location.href = 'index.html';
-  return false;
-}
-    </script>
+</script>
+<script src="form-update.js"></script>
 </html>
