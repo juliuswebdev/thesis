@@ -256,15 +256,7 @@
               },
             ]);
           }
-          
-          const record = await database.from('miyembro').select("*").eq('user_id',JSON.parse(userData).id);
-
-          if (record.data.length) {
-            window.location.href = 'form-lp.html';
-          } else {
-            window.location.href = 'registration-form1.html';
-          }
-          //
+          window.location.href = 'registration-form1.html';
         } else {
           alert('Invalid Role.');
         }
